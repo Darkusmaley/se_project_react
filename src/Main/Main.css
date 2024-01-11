@@ -1,0 +1,16 @@
+.weather {
+  position: relative;
+  padding: 0 40px;
+}
+
+.weather__info {
+  position: absolute;
+  font-family: Cabinet Grotesk;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #fff;
+  padding:20px 0 20px 15px ;
+}
