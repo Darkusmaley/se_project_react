@@ -1,16 +1,22 @@
 import "./Main.css";
+import defaultClothingItems from "../Utils/Constants";
+import WeatherCard from "../Weathercard/Weathercard";
+import ItemCard from "../ItemCard/ItemCard";
 
-const Main = () => {
-  console.log("main");
+function Main({ weatherTemp }) {
   return (
-    <main className="main">
-      <section className="weather" id="weather">
-        <div className="weather__info">75°F</div>
-        <img src="../images/Sunny.svg" className="weather__image" />
+    <main className="main app__section">
+      <WeatherCard day={true} type="cloudy" weatherTemp="75°F" />
+      <section className="card__section" id="card-section">
+        Today is {weatherTemp} / You may want to wear:
+        <div className="card__items">
+          {defaultClothingItems.map((clothes) => (
+            <ItemCard x={clothes} />
+          ))}
+        </div>
       </section>
-      <section id="card-section">card-section</section>
     </main>
   );
-};
+}
 
 export default Main;

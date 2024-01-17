@@ -1,4 +1,50 @@
 .App {
   max-width: 1440px;
+ 
 }
 
+.app__section {
+  max-width: 1440px;
+  padding: 0 40px;
+}
+
+.card__section {
+  max-width: 1360px;
+  margin-top: 40px;
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.card__section-image {
+  max-width: 326px;
+  max-height: 323px;
+  border-radius: 10px;
+}
+
+.card__name {
+  text-align: center;
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+}
+
+.card__items {
+  display: flex;
+  column-gap: 21px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 34px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1358px;
+  margin-top: 171px;
+}

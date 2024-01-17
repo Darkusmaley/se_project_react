@@ -6,7 +6,8 @@
   align-items: center;
   max-width: 1360px;
   max-height: 40px;
-  margin: 32px 40px 28px;
+  margin: 32px 0px 28px;
+
 }
 
 .header__logo {

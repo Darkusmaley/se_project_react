@@ -1,4 +1,4 @@
-export const defaultClothingItems = [
+ const defaultClothingItems = [
   {
     _id: 0,
     name: "Cap",
@@ -37,8 +37,13 @@ export const defaultClothingItems = [
   },
 ];
 
+
+
 const apiKey = "17375eac01fbce5c6c16dba5277ab727";
 const latitude = 40.7182;
 const longitude = 73.3543;
 const baseUrl = "http://localhost:3001";
 const baseHeaders = { "Content-Type": "application/json" };
+
+
+export default defaultClothingItems

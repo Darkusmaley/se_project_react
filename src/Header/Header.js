@@ -3,12 +3,12 @@ import "./Header.css";
 const Header = () => {
   console.log("header");
   return (
-    <header className="header">
+    <header className="header app__section">
       <div className="header__logo">
         <div>
           <img
             className="header__logo-image"
-            src="./images/Logo.svg"
+            src={require("../images/Logo.svg").default}
             alt="Logo"
           />
         </div>
@@ -28,7 +28,7 @@ const Header = () => {
         <div>
           <img
             className="header__logo-avatar-image"
-            src="./images/Avatar.svg"
+            src={require("../images/Avatar.svg").default}
             alt="Avatar logo"
           />
         </div>
