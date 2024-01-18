@@ -1,7 +1,7 @@
 import "./Main.css";
 import defaultClothingItems from "../utils/constants";
-import WeatherCard from "../Weathercard/Weathercard";
-import ItemCard from "../ItemCard/ItemCard";
+import WeatherCard from "./Weathercard";
+import ItemCard from "./ItemCard";
 import { useMemo } from "react";
 
 function Main({ weatherTemp, onSelectCard }) {
@@ -18,7 +18,6 @@ function Main({ weatherTemp, onSelectCard }) {
   const filterCards = defaultClothingItems.filter((item) => {
     return item.weather.toLocaleLowerCase() === weatherType;
   });
-
 
   return (
     <main className="main app__section">

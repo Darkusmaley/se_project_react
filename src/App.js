@@ -1,11 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Header from "./Header/Header";
-import Main from "./Main/Main";
-import Footer from "./Footer/Footer";
-import ModalWithForm from "./Modals/ModalWithForm";
+import Header from "./components/Header.js";
+import Main from "./components/Main.js";
+import Footer from "./components/Footer.js";
+import ModalWithForm from "./components/ModalWithForm.js";
 import { useEffect, useState } from "react";
-import ItemModal from "./ItemModal/ItemModal";
+import ItemModal from "./components/ItemModal.js";
 import { getForcastWeather } from "./utils/Weatherapi.js";
 import { parseWeatherData } from "./utils/Weatherapi.js";
 
