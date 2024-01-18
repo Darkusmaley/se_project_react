@@ -1,4 +1,4 @@
-import "../Weathercard/Weathercard.css"
+import "../Weathercard/Weathercard.css";
 
 const weatherOptions = [
   { url: require("../images/day/Sunny.svg").default, day: true, type: "sunny" },
@@ -45,17 +45,16 @@ const weatherOptions = [
 
 const WeatherCard = ({ day, type, weatherTemp = "" }) => {
   const imageSrc = weatherOptions.filter((i) => {
-    console.log(i);
     return i.day === day && i.type === type;
   });
-  console.log(imageSrc);
-  console.log(imageSrc[0].url);
 
   const imageSrcUrl = imageSrc[0].url || "";
   return (
     <section className="weather" id="weather">
       <div className="weather__info">{weatherTemp}</div>
-      <div><img src={imageSrcUrl} className="weather__image" /></div>
+      <div>
+        <img src={imageSrcUrl} className="weather__image" />
+      </div>
     </section>
   );
 };
