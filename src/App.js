@@ -10,7 +10,6 @@ import { getForcastWeather } from "./Utils/Weatherapi";
 import { parseWeatherData } from "../src/Utils/Weatherapi.js";
 
 function App() {
-  const weatherTemp = "75°F";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
