@@ -6,8 +6,8 @@ import Footer from "./Footer/Footer";
 import ModalWithForm from "./Modals/ModalWithForm";
 import { useEffect, useState } from "react";
 import ItemModal from "./ItemModal/ItemModal";
-import { getForcastWeather } from "./Utils/Weatherapi";
-import { parseWeatherData } from "../src/Utils/Weatherapi.js";
+import { getForcastWeather } from "./utils/Weatherapi.js";
+import { parseWeatherData } from "./utils/Weatherapi.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
