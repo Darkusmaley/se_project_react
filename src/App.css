@@ -1,5 +1,6 @@
 .App {
   max-width: 1440px;
+  margin: 0 auto;
 }
 
 .app__section {
@@ -18,16 +19,11 @@
   text-align: left;
 }
 
-/* .form__info{
-  display: flex;
-  flex-direction: ;
-} */
-
-.form__text{
-margin-bottom: 0;
+.form__text {
+  margin-bottom: 0;
 }
 
-.form__label{
+.form__label {
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
@@ -45,10 +41,10 @@ margin-bottom: 0;
   margin-top: 8px;
 }
 
-.form__weathertypes{
+.form__weathertypes {
   margin-top: 8px;
 }
 
-.form__weathertypes:last-child{
+.form__weathertypes:last-child {
   margin-bottom: 32px;
 }
