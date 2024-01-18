@@ -7,7 +7,6 @@
   max-width: 1360px;
   max-height: 40px;
   margin: 32px 0px 28px;
-
 }
 
 .header__logo {
@@ -26,4 +25,14 @@
 .header__logo-avatar-image {
   max-height: 40px;
   max-width: 40px;
+}
+
+.header__clothes-add-button {
+  background-color: #fff;
+  border: none;
+}
+
+.header__clothes-add-button:hover {
+  background: #00000099;
+  color: #fff;
 }

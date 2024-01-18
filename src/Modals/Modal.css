@@ -33,3 +33,7 @@
   height: 16px;
   border: none;
 }
+.modal__close-button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}

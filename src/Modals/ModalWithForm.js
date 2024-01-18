@@ -1,6 +1,6 @@
 import "./Modal.css";
 
-const MOdalWithForm = ({
+const ModalWithForm = ({
   children,
   buttonText = "Add garment",
   title,
@@ -15,7 +15,7 @@ const MOdalWithForm = ({
           type="button"
           onClick={onClose}
           className="modal__close-button"
-        ></button>
+        />
         <h3 className="modal__title">{title}</h3>
         <form>
           {children}
@@ -28,4 +28,4 @@ const MOdalWithForm = ({
   );
 };
 
-export default MOdalWithForm;
+export default ModalWithForm;
