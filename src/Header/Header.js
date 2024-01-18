@@ -1,7 +1,6 @@
 import "./Header.css";
 
-const Header = ({onCreateModal}) => {
-  console.log("header");
+const Header = ({ onCreateModal }) => {
   return (
     <header className="header app__section">
       <div className="header__logo">
@@ -22,7 +21,7 @@ const Header = ({onCreateModal}) => {
             onClick={onCreateModal}
             id="add-clothes-button"
           >
-            + Add New Clothes
+            Add New Clothes
           </button>
         </div>
         <div>name</div>

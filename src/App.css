@@ -1,6 +1,5 @@
 .App {
   max-width: 1440px;
- 
 }
 
 .app__section {
@@ -19,3 +18,37 @@
   text-align: left;
 }
 
+/* .form__info{
+  display: flex;
+  flex-direction: ;
+} */
+
+.form__text{
+margin-bottom: 0;
+}
+
+.form__label{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.input {
+  border: none;
+  border-bottom: solid 1px rgba(0, 0, 0, 1);
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-top: 8px;
+}
+
+.form__weathertypes{
+  margin-top: 8px;
+}
+
+.form__weathertypes:last-child{
+  margin-bottom: 32px;
+}

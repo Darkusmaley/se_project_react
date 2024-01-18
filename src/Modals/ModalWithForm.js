@@ -6,8 +6,8 @@ const ModalWithForm = ({
   title,
   onClose,
   name,
+  onSubmit,
 }) => {
-  console.log("ModalWithForm");
   return (
     <div className={`modal modal__type_${name}`}>
       <div className="modal__content">
@@ -19,7 +19,11 @@ const ModalWithForm = ({
         <h3 className="modal__title">{title}</h3>
         <form>
           {children}
-          <button type="submit" className="form__submit-button">
+          <button
+            type="submit"
+            className="form__submit-button"
+            onSubmit={onSubmit}
+          >
             {buttonText}
           </button>
         </form>

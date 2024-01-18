@@ -37,3 +37,21 @@
   cursor: pointer;
   opacity: 0.5;
 }
+
+.form__submit-button {
+  border-radius: 4px;
+  border-color: #00;
+  background: #000000;
+  color: #fff;
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.form__submit-button:hover {
+  background: #0000004d;
+  border-color: #0000004d;
+}
