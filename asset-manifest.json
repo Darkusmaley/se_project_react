@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/se_project_react/static/css/main.51ceeb01.css",
+    "main.js": "/se_project_react/static/js/main.3b5cf656.js",
+    "static/js/787.aec36e2a.chunk.js": "/se_project_react/static/js/787.aec36e2a.chunk.js",
+    "static/media/Avatar.svg": "/se_project_react/static/media/Avatar.5f7caf64febb82f6fc982cf3b9a7d410.svg",
+    "static/media/Snow-night.svg": "/se_project_react/static/media/Snow-night.20a89d711249712380ea9f4269b386a3.svg",
+    "static/media/Snow.svg": "/se_project_react/static/media/Snow.a5bb7441280cef64ae081acadb7d6e66.svg",
+    "static/media/Storm-night.svg": "/se_project_react/static/media/Storm-night.b98983c750d3f283a9267efc3c3fd940.svg",
+    "static/media/Storm.svg": "/se_project_react/static/media/Storm.51c68e175fd385c6055462b91d462bd5.svg",
+    "static/media/Rain-night.svg": "/se_project_react/static/media/Rain-night.ebe0301b9856c6c8564df5c8beea1ac8.svg",
+    "static/media/Rain.svg": "/se_project_react/static/media/Rain.8fd968acf8cb57624e2a990b324c1278.svg",
+    "static/media/logo.svg": "/se_project_react/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/Fog-night.svg": "/se_project_react/static/media/Fog-night.cee462810b2a7c8696b7701170241a66.svg",
+    "static/media/Fog.svg": "/se_project_react/static/media/Fog.8ad4efe699a8e3a16ae0220f3b5a3d48.svg",
+    "static/media/Logo.svg": "/se_project_react/static/media/Logo.2e52a3b54443b649938df0a9b3d231e2.svg",
+    "static/media/Cloudy-night.svg": "/se_project_react/static/media/Cloudy-night.c52565b10982a97a5a67275442bd12ee.svg",
+    "static/media/Cloudy.svg": "/se_project_react/static/media/Cloudy.afb98af2bd43d3a2a330e655695bd2c9.svg",
+    "static/media/Union.svg": "/se_project_react/static/media/Union.5041c8cbf1275be14ac1.svg",
+    "index.html": "/se_project_react/index.html",
+    "static/media/Sunny-night.svg": "/se_project_react/static/media/Sunny-night.ae0e6bbe1e0bfc883f3ba207396bf3b4.svg",
+    "static/media/Sunny.svg": "/se_project_react/static/media/Sunny.1c3ffd02d92146a2673939be89b88d54.svg",
+    "main.51ceeb01.css.map": "/se_project_react/static/css/main.51ceeb01.css.map",
+    "main.3b5cf656.js.map": "/se_project_react/static/js/main.3b5cf656.js.map",
+    "787.aec36e2a.chunk.js.map": "/se_project_react/static/js/787.aec36e2a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.51ceeb01.css",
+    "static/js/main.3b5cf656.js"
+  ]
+}
