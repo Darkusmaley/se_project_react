@@ -37,4 +37,47 @@ const defaultClothingItems = [
   },
 ];
 
+export const weatherOptions = [
+  { url: require("../images/day/Sunny.svg").default, day: true, type: "sunny" },
+  {
+    url: require("../images/day/Cloudy.svg").default,
+    day: true,
+    type: "cloudy",
+  },
+  { url: require("../images/day/Storm.svg").default, day: true, type: "storm" },
+  { url: require("../images/day/Snow.svg").default, day: true, type: "snow" },
+  { url: require("../images/day/Fog.svg").default, day: true, type: "fog" },
+  { url: require("../images/day/Rain.svg").default, day: true, type: "rain" },
+  {
+    url: require("../images/night/Sunny-night.svg").default,
+    day: false,
+    type: "sunny",
+  },
+  {
+    url: require("../images/night/Cloudy-night.svg").default,
+    day: false,
+    type: "cloudy",
+  },
+  {
+    url: require("../images/night/Storm-night.svg").default,
+    day: false,
+    type: "storm",
+  },
+  {
+    url: require("../images/night/Snow-night.svg").default,
+    day: false,
+    type: "snow",
+  },
+  {
+    url: require("../images/night/Fog-night.svg").default,
+    day: false,
+    type: "fog",
+  },
+  {
+    url: require("../images/night/Rain-night.svg").default,
+    day: false,
+    type: "rain",
+  },
+];
+
 export default defaultClothingItems;

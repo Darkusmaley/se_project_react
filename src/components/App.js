@@ -1,13 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Header from "./components/Header.js";
-import Main from "./components/Main.js";
-import Footer from "./components/Footer.js";
-import ModalWithForm from "./components/ModalWithForm.js";
+import Header from "./Header.js";
+import Main from "./Main.js";
+import Footer from "./Footer.js";
+import ModalWithForm from "./ModalWithForm.js";
 import { useEffect, useState } from "react";
-import ItemModal from "./components/ItemModal.js";
-import { getForcastWeather } from "./utils/Weatherapi.js";
-import { parseWeatherData } from "./utils/Weatherapi.js";
+import ItemModal from "./ItemModal.js";
+import { getForcastWeather } from "../utils/Weatherapi.js";
+import { parseWeatherData } from "../utils/Weatherapi.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -27,16 +26,16 @@ function App() {
     setSelectedCard(card);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
   useEffect(() => {
-    getForcastWeather().then((data) => {
-      parseWeatherData(data);
-      const temperature = parseWeatherData(data);
-      setTemp(temperature);
-    });
+    getForcastWeather()
+      .then((data) => {
+        parseWeatherData(data);
+        const temperature = parseWeatherData(data);
+        setTemp(temperature);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
@@ -44,11 +43,7 @@ function App() {
       <Header onCreateModal={handleCreateModal} />
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       {activeModal === "create" && (
-        <ModalWithForm
-          title="New garment"
-          onClose={handleCloseModal}
-          onSubmit={handleSubmit}
-        >
+        <ModalWithForm title="New garment" onClose={handleCloseModal}>
           <div className="form__info">
             <label className="form__label">
               Name
@@ -75,16 +70,32 @@ function App() {
           <p className="form__text">Select the weather type:</p>
           <div>
             <div className="form__weathertypes">
-              <input type="radio" id="hot" value="hot" />
-              <label>Hot</label>
+              <label>
+                <input type="radio" id="hot" value="hot" name="radio-button" />
+                Hot
+              </label>
             </div>
             <div className="form__weathertypes">
-              <input type="radio" id="warm" value="warm" />
-              <label>Warm</label>
+              <label>
+                <input
+                  type="radio"
+                  id="warm"
+                  value="warm"
+                  name="radio-button"
+                />
+                Warm
+              </label>
             </div>
             <div className="form__weathertypes">
-              <input type="radio" id="cold" value="cold" />
-              <label>Cold</label>
+              <label>
+                <input
+                  type="radio"
+                  id="cold"
+                  value="cold"
+                  name="radio-button"
+                />
+                Cold
+              </label>
             </div>
           </div>
         </ModalWithForm>
