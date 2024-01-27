@@ -1,6 +1,7 @@
 import "./Header.css";
-import logo from "../images/Logo.svg";
-import avatar from "../images/Avatar.svg";
+import logo from "./Logo.svg";
+import avatar from "./Avatar.svg";
+import SwitchTemp from "../TemperatureSwitch/TemperatureSwitch";
 const Header = ({ onCreateModal }) => {
   return (
     <header className="header app__section">
@@ -10,7 +11,8 @@ const Header = ({ onCreateModal }) => {
         </div>
         <div>{currentDate}, New York</div>
       </div>
-      <div className="header__avatar-logo">
+      <div className="header__avatar">
+        <SwitchTemp/>
         <div>
           <button
             className="header__clothes-add-button"

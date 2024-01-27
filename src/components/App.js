@@ -1,10 +1,10 @@
 import "./App.css";
-import Header from "./Header.js";
-import Main from "./Main.js";
-import Footer from "./Footer.js";
+import Header from "./Header/Header.js";
+import Main from "./Main/Main.js";
+import Footer from "./Footer/Footer.js";
 import ModalWithForm from "./ModalWithForm.js";
 import { useEffect, useState } from "react";
-import ItemModal from "./ItemModal.js";
+import ItemModal from "./ItemModal/ItemModal.js";
 import { getForcastWeather } from "../utils/Weatherapi.js";
 import { parseWeatherData } from "../utils/Weatherapi.js";
 
@@ -41,6 +41,7 @@ function App() {
   return (
     <div className="App">
       <Header onCreateModal={handleCreateModal} />
+
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       {activeModal === "create" && (
         <ModalWithForm title="New garment" onClose={handleCloseModal}>

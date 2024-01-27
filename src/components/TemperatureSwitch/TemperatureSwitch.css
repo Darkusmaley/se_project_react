@@ -1,0 +1,58 @@
+.switch {
+  display: flex;
+  position: relative;
+}
+
+.switch__box {
+  border-radius: 25px;
+  border: 2px solid #7e7e7e;
+  width: 56px;
+  height: 28px;
+  appearance: none;
+}
+.switch__box:hover {
+  border: 2px solid #000;
+}
+
+.switch__slider {
+  border-radius: 20px;
+  width: 28px;
+  height: 28px;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+}
+
+.switch__slider-F {
+  top: 3px;
+  left: 4px;
+}
+
+.switch__slider-C {
+  top: 3px;
+  right: 3px;
+}
+
+.switch__temp-F {
+  position: absolute;
+  color: #fff;
+  top: -6px;
+  left: 14px;
+}
+
+.switch__temp-C {
+  position: absolute;
+  color: #fff;
+  right: 13px;
+  top: -6px;
+}
+
+.switch__active {
+  font-family: Cabinet Grotesk;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+}

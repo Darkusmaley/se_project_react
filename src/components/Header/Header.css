@@ -16,7 +16,7 @@
   gap: 24px;
 }
 
-.header__avatar-logo {
+.header__avatar {
   display: flex;
   align-items: center;
   gap: 20px;
