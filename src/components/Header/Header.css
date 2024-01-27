@@ -35,4 +35,20 @@
 .header__clothes-add-button:hover {
   background: #00000099;
   color: #fff;
+  border-radius: 5px;
+}
+
+.profile__link {
+  color: #000;
+  outline: 0;
+  text-decoration: none;
+}
+
+.profile__link:hover {
+  color: #0066cc;
+}
+
+.header__logo-image:hover {
+  background-color: #00000099;
+  border-radius: 5px;
 }

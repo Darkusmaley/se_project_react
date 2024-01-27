@@ -2,17 +2,21 @@ import "./Header.css";
 import logo from "./Logo.svg";
 import avatar from "./Avatar.svg";
 import SwitchTemp from "../TemperatureSwitch/TemperatureSwitch";
+import { Link } from "react-router-dom";
+
 const Header = ({ onCreateModal }) => {
   return (
     <header className="header app__section">
       <div className="header__logo">
         <div>
-          <img className="header__logo-image" src={logo} alt="Logo" />
+          <Link to="/">
+            <img className="header__logo-image" src={logo} alt="Logo" />
+          </Link>
         </div>
         <div>{currentDate}, New York</div>
       </div>
       <div className="header__avatar">
-        <SwitchTemp/>
+        <SwitchTemp />
         <div>
           <button
             className="header__clothes-add-button"
@@ -23,7 +27,9 @@ const Header = ({ onCreateModal }) => {
             Add New Clothes
           </button>
         </div>
-        <div>Terrence Tegegne</div>
+        <div>
+          <Link to="/profile" className="profile__link">Name</Link>
+        </div>
         <div>
           <img
             className="header__logo-avatar-image"
