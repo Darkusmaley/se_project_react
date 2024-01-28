@@ -2,21 +2,21 @@ import "./App.css";
 import Header from "./Header/Header.js";
 import Main from "./Main/Main.js";
 import Footer from "./Footer/Footer.js";
-import ModalWithForm from "./Modals/ModalWithForm.js";
-import { useEffect, useState } from "react";
+import Profile from "./Profile/Profile.js";
 import ItemModal from "./ItemModal/ItemModal.js";
+import AddItemModal from "./Modals/AddItemModal.js";
+import { useEffect, useState } from "react";
 import { getForcastWeather } from "../utils/Weatherapi.js";
 import { parseWeatherData } from "../utils/Weatherapi.js";
 import { currentTemperatureUnitContext } from "./context/CurrentTemperatureContext.js";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min.js";
-import AddItemModal from "./Modals/AddItemModal.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-
+  const [item, setClothItem] = useState("");
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -30,9 +30,11 @@ function App() {
     setSelectedCard(card);
   };
 
-  const onAddItem = (values) => {
-    console.log(values);
+  const onAddItem = ({ name, link }) => {
+    console.log({ name, link });
   };
+
+  const handleAddItemSubmit = () => {};
 
   useEffect(() => {
     getForcastWeather()
@@ -62,7 +64,9 @@ function App() {
           <Route exact path="/">
             <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
           </Route>
-          <Route path="/profile">Profile</Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
         </Switch>
 
         <Footer />
