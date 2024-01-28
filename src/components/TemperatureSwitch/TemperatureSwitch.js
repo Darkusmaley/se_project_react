@@ -3,19 +3,10 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import { currentTemperatureUnitContext } from "../context/CurrentTemperatureContext";
 const SwitchTemp = () => {
-  // const [checked, setChecked] = useState("F");
-
-  // const handleTempChange = () => {
-  //   if (checked === "C") setChecked("F");
-  //   if (checked === "F") setChecked("C");
-  // };
-  // console.log(checked);
-
   const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
     currentTemperatureUnitContext
   );
 
-  console.log(currentTemperatureUnit)
   return (
     <>
       <label className="switch">

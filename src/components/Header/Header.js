@@ -28,7 +28,9 @@ const Header = ({ onCreateModal }) => {
           </button>
         </div>
         <div>
-          <Link to="/profile" className="profile__link">Name</Link>
+          <Link to="/profile" className="profile__link">
+            Name
+          </Link>
         </div>
         <div>
           <img
