@@ -16,17 +16,6 @@ const SideBar = () => {
         </div>
         <div className="sidebar__name">Name</div>
       </div>
-      <section className="card__section" id="card-section">
-        <div className="card__items">
-          {filterCards.map((clothes) => (
-            <ItemCard
-              item={clothes}
-              onSelectCard={onSelectCard}
-              key={clothes._id}
-            />
-          ))}
-        </div>
-      </section>
     </div>
   );
 };
