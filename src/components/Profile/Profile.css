@@ -1,0 +1,20 @@
+.profile {
+  display: flex;
+  margin-top: 63px;
+}
+
+.profile__link {
+  color: #000;
+  outline: 0;
+  text-decoration: none;
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.profile__link:hover {
+  color: #0066cc;
+}

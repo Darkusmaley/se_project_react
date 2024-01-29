@@ -1,14 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import avatar from "../Header/Avatar.svg";
 import SideBar from "../SideBar/SideBar";
 import ClothingSection from "../ClothingSection/ClothingSection";
+import "./Profile.css";
 
-const Profile = () => {
+const Profile = ({ onSelectCard, onCreateModal}) => {
   return (
-    <div>
-      <SideBar />
-      <ClothingSection />
+    <div className="profile">
+      <div>
+        <SideBar />
+      </div>
+      <div>
+        <ClothingSection onSelectCard={onSelectCard} onCreateModal={onCreateModal}/>
+      </div>
     </div>
   );
 };

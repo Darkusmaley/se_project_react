@@ -4,7 +4,6 @@
   max-height: 56px;
   align-items: center;
   gap: 16px;
-  margin-top: 47px;
 }
 
 .sidebar__name {
@@ -15,9 +14,10 @@
   letter-spacing: 0em;
   text-align: left;
   max-height: 25px;
+  width: 229px;
 }
 
-.sidebar__logo-avatar{
+.sidebar__logo-avatar {
   width: 56px;
   height: 56px;
 }

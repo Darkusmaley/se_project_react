@@ -30,22 +30,18 @@
 .header__clothes-add-button {
   background-color: #fff;
   border: none;
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .header__clothes-add-button:hover {
   background: #00000099;
   color: #fff;
   border-radius: 5px;
-}
-
-.profile__link {
-  color: #000;
-  outline: 0;
-  text-decoration: none;
-}
-
-.profile__link:hover {
-  color: #0066cc;
 }
 
 .header__logo-image:hover {

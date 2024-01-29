@@ -24,7 +24,7 @@ const Header = ({ onCreateModal }) => {
             onClick={onCreateModal}
             id="add-clothes-button"
           >
-            Add New Clothes
+            + Add new
           </button>
         </div>
         <div>
