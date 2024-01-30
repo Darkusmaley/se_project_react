@@ -1,7 +1,7 @@
 import "./Header.css";
 import logo from "../../images/Logo.svg";
 import avatar from "../../images/Avatar.svg";
-import SwitchTemp from "../TemperatureSwitch/ToggleSwitch";
+import ToggleSwitch from "../TemperatureSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
 const Header = ({ onCreateModal }) => {
@@ -17,7 +17,7 @@ const Header = ({ onCreateModal }) => {
         <div className="header__date">{currentDate}, New York</div>
       </div>
       <div className="header__avatar">
-        <SwitchTemp />
+        <ToggleSwitch />
         <div>
           <button
             className="header__clothes-add-button"

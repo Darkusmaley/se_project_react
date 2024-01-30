@@ -1,6 +1,6 @@
 import React from "react";
 import SideBar from "../SideBar/SideBar";
-import ClothingSection from "../ClothingSection/ClothingSection";
+import ClothesSection from "../ClothingSection/ClothesSection";
 import "./Profile.css";
 
 const Profile = ({ onSelectCard, onCreateModal, clothingItems }) => {
@@ -11,7 +11,7 @@ const Profile = ({ onSelectCard, onCreateModal, clothingItems }) => {
         <SideBar profileName={profileName} />
       </div>
       <div>
-        <ClothingSection
+        <ClothesSection
           onSelectCard={onSelectCard}
           onCreateModal={onCreateModal}
           clothingItems={clothingItems}

@@ -1,8 +1,8 @@
 import React from "react";
 import ItemCard from "../ItemCard/ItemCard";
-import "./ClothingSection.css";
+import "./ClothesSection.css";
 
-const ClothingSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
+const ClothesSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
   return (
     <section className="profile__items">
       <div className="profile__new-clothes" type="text">
@@ -26,4 +26,4 @@ const ClothingSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
   );
 };
 
-export default ClothingSection;
+export default ClothesSection;
