@@ -8,7 +8,7 @@ import AddItemModal from "./Modals/AddItemModal.js";
 import { useEffect, useState } from "react";
 import { getForcastWeather } from "../utils/Weatherapi.js";
 import { parseWeatherData } from "../utils/Weatherapi.js";
-import { currentTemperatureUnitContext } from "../contexts/CurrentTemperatureContext.js";
+import { currentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min.js";
 import api from "../utils/api.js";
 
