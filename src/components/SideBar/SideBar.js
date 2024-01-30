@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import avatar from "../Header/Avatar.svg";
 import "./SideBar.css";
 
-const SideBar = () => {
+const SideBar = ({ profileName }) => {
   return (
     <div>
       <div className="sidebar app__section">
@@ -14,7 +13,7 @@ const SideBar = () => {
             alt="Avatar logo"
           />
         </div>
-        <div className="sidebar__name">Name</div>
+        <div className="sidebar__name">{profileName}</div>
       </div>
     </div>
   );

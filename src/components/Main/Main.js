@@ -6,15 +6,16 @@ import { useMemo, useContext } from "react";
 import { currentTemperatureUnitContext } from "../context/CurrentTemperatureContext";
 
 function Main({ weatherTemp, onSelectCard, clothingItems }) {
-  console.log(clothingItems);
   const { currentTemperatureUnit } = useContext(currentTemperatureUnitContext);
-  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
+  const temp = weatherTemp?.temperature?.[currentTemperatureUnit];
+  const weatherUnitSwitch =
+    currentTemperatureUnit === "F" ? temp : (temp * 5) / 9 + 32;
   const weatherType = useMemo(() => {
-    if (temp >= 86) {
+    if (weatherUnitSwitch >= 86) {
       return "hot";
-    } else if (temp >= 66 && temp <= 85) {
+    } else if (weatherUnitSwitch >= 66 && weatherUnitSwitch <= 85) {
       return "warm";
-    } else if (temp <= 65) {
+    } else if (weatherUnitSwitch <= 65) {
       return "cold";
     }
   }, [weatherTemp]);

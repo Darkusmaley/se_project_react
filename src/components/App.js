@@ -11,14 +11,13 @@ import { parseWeatherData } from "../utils/Weatherapi.js";
 import { currentTemperatureUnitContext } from "./context/CurrentTemperatureContext.js";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min.js";
 import api from "../utils/api.js";
-import defaultClothingItems from "../utils/constants.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [clothingItems, setClothingItem] = useState("");
+  const [clothingItems, setClothingItem] = useState([]);
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -37,7 +36,7 @@ function App() {
       .deleteClothingItems(card._id)
       .then(() => {
         setClothingItem((items) =>
-          items.filter((item) => item._id != card._id)
+          items.filter((item) => item._id !== card._id)
         );
         handleCloseModal();
       })

@@ -5,6 +5,7 @@ import SwitchTemp from "../TemperatureSwitch/TemperatureSwitch";
 import { Link } from "react-router-dom";
 
 const Header = ({ onCreateModal }) => {
+  const profileName = "Terrence Tegegne";
   return (
     <header className="header app__section">
       <div className="header__logo">
@@ -13,7 +14,7 @@ const Header = ({ onCreateModal }) => {
             <img className="header__logo-image" src={logo} alt="Logo" />
           </Link>
         </div>
-        <div>{currentDate}, New York</div>
+        <div className="header__date">{currentDate}, New York</div>
       </div>
       <div className="header__avatar">
         <SwitchTemp />
@@ -29,7 +30,7 @@ const Header = ({ onCreateModal }) => {
         </div>
         <div>
           <Link to="/profile" className="profile__link">
-            Name
+            {profileName}
           </Link>
         </div>
         <div>

@@ -3,7 +3,6 @@
   flex-direction: column;
   max-width: 1015px;
   margin-left: 89px;
-  height: 676px;
 }
 
 .profile__new-clothes {
@@ -23,11 +22,9 @@
   display: flex;
   align-items: center;
   max-width: 1015px;
-  max-height: 676px;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  /* overflow: hidden; */
 }
 
 .profile__add-clothes-button {
