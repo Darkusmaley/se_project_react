@@ -1,12 +1,12 @@
 import "./Main.css";
-import defaultClothingItems from "../../utils/constants";
 import WeatherCard from "../Weathercard/Weathercard";
 import ItemCard from "../ItemCard/ItemCard";
 import React from "react";
 import { useMemo, useContext } from "react";
 import { currentTemperatureUnitContext } from "../context/CurrentTemperatureContext";
 
-function Main({ weatherTemp, onSelectCard }) {
+function Main({ weatherTemp, onSelectCard, clothingItems }) {
+  console.log(clothingItems);
   const { currentTemperatureUnit } = useContext(currentTemperatureUnitContext);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
   const weatherType = useMemo(() => {
@@ -19,13 +19,18 @@ function Main({ weatherTemp, onSelectCard }) {
     }
   }, [weatherTemp]);
 
-  const filterCards = defaultClothingItems.filter((item) => {
-    return item.weather.toLocaleLowerCase() === weatherType;
+  const filterCards = clothingItems.filter((item) => {
+    return item.weather === weatherType;
   });
 
   return (
     <main className="main app__section">
-      <WeatherCard day={true} type="cloudy" weatherTemp={temp} />
+      <WeatherCard
+        day={true}
+        type="cloudy"
+        weatherTemp={temp}
+        weatherUnitSwitch={currentTemperatureUnit}
+      />
       <section className="card__section" id="card-section">
         Today is {temp}
         {currentTemperatureUnit === "F" ? "°F" : "°C"} / You may want to wear:

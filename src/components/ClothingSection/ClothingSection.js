@@ -1,11 +1,10 @@
 import React from "react";
 import ItemCard from "../ItemCard/ItemCard";
-import defaultClothingItems from "../../utils/constants";
 import "./ClothingSection.css";
 
-const ClothingSection = ({ onSelectCard, onCreateModal }) => {
+const ClothingSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
   return (
-    <div className="profile__items">
+    <section className="profile__items">
       <div className="profile__new-clothes" type="text">
         <p>Your items</p>
         <div className="profile__new-clothes" type="text">
@@ -19,15 +18,11 @@ const ClothingSection = ({ onSelectCard, onCreateModal }) => {
         </div>
       </div>
       <div className="profile__clothes-section">
-        {defaultClothingItems.map((item) => (
-          <ItemCard
-            item={item}
-            onSelectCard={onSelectCard}
-            onClick={onCreateModal}
-          />
+        {clothingItems.map((item) => (
+          <ItemCard item={item} onSelectCard={onSelectCard} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

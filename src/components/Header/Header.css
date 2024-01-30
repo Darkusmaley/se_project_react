@@ -42,6 +42,7 @@
   background: #00000099;
   color: #fff;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .header__logo-image:hover {

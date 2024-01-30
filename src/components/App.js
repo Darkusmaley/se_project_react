@@ -10,13 +10,15 @@ import { getForcastWeather } from "../utils/Weatherapi.js";
 import { parseWeatherData } from "../utils/Weatherapi.js";
 import { currentTemperatureUnitContext } from "./context/CurrentTemperatureContext.js";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min.js";
+import api from "../utils/api.js";
+import defaultClothingItems from "../utils/constants.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [item, setClothItem] = useState("");
+  const [clothingItems, setClothingItem] = useState("");
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -30,11 +32,38 @@ function App() {
     setSelectedCard(card);
   };
 
-  const onAddItem = ({ name, link }) => {
-    console.log({ name, link });
+  const handleCardDelete = (card) => {
+    api
+      .deleteClothingItems(card._id)
+      .then(() => {
+        setClothingItem((items) =>
+          items.filter((item) => item._id != card._id)
+        );
+        handleCloseModal();
+      })
+      .catch((err) => console.log(err));
   };
 
-  const handleAddItemSubmit = () => {};
+  const handleAddItemSubmit = (item) => {
+    api
+      .addClothingItems(item)
+      .then((newItem) => {
+        setClothingItem([newItem, ...clothingItems]);
+        console.log(newItem);
+        handleCloseModal();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    api
+      .getClothingItems()
+      .then((items) => {
+        setClothingItem(items);
+        handleCloseModal();
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     getForcastWeather()
@@ -47,6 +76,28 @@ function App() {
         console.log(err);
       });
   }, []);
+
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleOutsideClick = (e) => {
+      if (e.target.classList.contains("modal")) {
+        handleCloseModal();
+      }
+    };
+
+    const handleEscapeClose = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+    document.addEventListener("keydown", handleEscapeClose);
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscapeClose);
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [activeModal]);
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
@@ -62,10 +113,18 @@ function App() {
         <Header weatherTemp={temp} onCreateModal={handleCreateModal} />
         <Switch>
           <Route exact path="/">
-            <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+            <Main
+              weatherTemp={temp}
+              onSelectCard={handleSelectedCard}
+              clothingItems={clothingItems}
+            />
           </Route>
           <Route path="/profile">
-            <Profile onSelectCard={handleSelectedCard} onCreateModal={handleCreateModal} />
+            <Profile
+              clothingItems={clothingItems}
+              onSelectCard={handleSelectedCard}
+              onCreateModal={handleCreateModal}
+            />
           </Route>
         </Switch>
 
@@ -74,12 +133,16 @@ function App() {
           <AddItemModal
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "create"}
-            onAddItem={onAddItem}
+            handleAddItemSubmit={handleAddItemSubmit}
           />
         )}
 
         {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+          <ItemModal
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+            onCardDelete={handleCardDelete}
+          />
         )}
       </currentTemperatureUnitContext.Provider>
     </div>

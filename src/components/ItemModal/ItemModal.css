@@ -9,7 +9,6 @@
   width: 498px;
   height: 498px;
   border-radius: 10px 20px 0px 0px;
- 
 }
 
 .image__preview-name {
@@ -21,7 +20,6 @@
   text-align: left;
   margin-bottom: 0;
   margin-top: 20px;
-  position: ;
 }
 
 .image__preview-weather {
@@ -32,5 +30,22 @@
   letter-spacing: 0em;
   text-align: left;
   margin-top: 12px;
+}
+
+.image__delete-button {
+  color: #ff4d00;
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
   position: absolute;
+  bottom: 91px;
+  right: 32px;
+}
+
+.image__delete-button:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
