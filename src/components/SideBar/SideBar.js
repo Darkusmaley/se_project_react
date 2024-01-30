@@ -1,5 +1,5 @@
 import React from "react";
-import avatar from "../Header/Avatar.svg";
+import avatar from "../../images/Avatar.svg";
 import "./SideBar.css";
 
 const SideBar = ({ profileName }) => {

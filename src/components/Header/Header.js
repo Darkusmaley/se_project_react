@@ -1,6 +1,6 @@
 import "./Header.css";
-import logo from "./Logo.svg";
-import avatar from "./Avatar.svg";
+import logo from "../../images/Logo.svg";
+import avatar from "../../images/Avatar.svg";
 import SwitchTemp from "../TemperatureSwitch/TemperatureSwitch";
 import { Link } from "react-router-dom";
 
