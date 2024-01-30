@@ -1,7 +1,7 @@
 import "./Header.css";
 import logo from "../../images/Logo.svg";
 import avatar from "../../images/Avatar.svg";
-import SwitchTemp from "../TemperatureSwitch/TemperatureSwitch";
+import SwitchTemp from "../TemperatureSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
 const Header = ({ onCreateModal }) => {
