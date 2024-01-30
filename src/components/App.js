@@ -8,7 +8,7 @@ import AddItemModal from "./Modals/AddItemModal.js";
 import { useEffect, useState } from "react";
 import { getForcastWeather } from "../utils/Weatherapi.js";
 import { parseWeatherData } from "../utils/Weatherapi.js";
-import { currentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
+import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min.js";
 import api from "../utils/api.js";
 
@@ -106,7 +106,7 @@ function App() {
 
   return (
     <div className="App">
-      <currentTemperatureUnitContext.Provider
+      <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <Header weatherTemp={temp} onCreateModal={handleCreateModal} />
@@ -143,7 +143,7 @@ function App() {
             onCardDelete={handleCardDelete}
           />
         )}
-      </currentTemperatureUnitContext.Provider>
+      </CurrentTemperatureUnitContext.Provider>
     </div>
   );
 }
