@@ -40,6 +40,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
             maxLength="30"
             className="input"
             placeholder="Name"
+            value="name"
             onChange={handleNameChange}
           />
         </label>

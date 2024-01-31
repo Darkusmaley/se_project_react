@@ -11,7 +11,11 @@ import { parseWeatherData } from "../utils/Weatherapi.js";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min.js";
 import api from "../utils/api.js";
-import { deleteClothingItems, addClothingItems } from "../utils/api.js";
+import {
+  deleteClothingItems,
+  addClothingItems,
+  checkResponse,
+} from "../utils/api.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -85,27 +89,27 @@ function App() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  useEffect(() => {
-    if (!activeModal) return;
-    const handleOutsideClick = (e) => {
-      if (e.target.classList.contains("modal")) {
-        handleCloseModal();
-      }
-    };
+  // useEffect(() => {
+  //   if (!activeModal) return;
+  //   const handleOutsideClick = (e) => {
+  //     if (e.target.classList.contains("modal")) {
+  //       handleCloseModal();
+  //     }
+  //   };
 
-    const handleEscapeClose = (e) => {
-      if (e.key === "Escape") {
-        handleCloseModal();
-      }
-    };
-    document.addEventListener("keydown", handleEscapeClose);
-    document.addEventListener("mousedown", handleOutsideClick);
+  //   const handleEscapeClose = (e) => {
+  //     if (e.key === "Escape") {
+  //       handleCloseModal();
+  //     }
+  //   };
+  //   document.addEventListener("keydown", handleEscapeClose);
+  //   document.addEventListener("mousedown", handleOutsideClick);
 
-    return () => {
-      document.removeEventListener("keydown", handleEscapeClose);
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [activeModal]);
+  //   return () => {
+  //     document.removeEventListener("keydown", handleEscapeClose);
+  //     document.removeEventListener("mousedown", handleOutsideClick);
+  //   };
+  // }, [activeModal]);
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"

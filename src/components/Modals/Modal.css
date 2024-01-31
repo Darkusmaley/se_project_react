@@ -55,3 +55,8 @@
   background: #0000004d;
   border-color: #0000004d;
 }
+
+.modal__container {
+  width: 496px;
+  height: 436px;
+}
