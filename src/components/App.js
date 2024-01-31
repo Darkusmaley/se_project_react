@@ -89,28 +89,6 @@ function App() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  // useEffect(() => {
-  //   if (!activeModal) return;
-  //   const handleOutsideClick = (e) => {
-  //     if (e.target.classList.contains("modal")) {
-  //       handleCloseModal();
-  //     }
-  //   };
-
-  //   const handleEscapeClose = (e) => {
-  //     if (e.key === "Escape") {
-  //       handleCloseModal();
-  //     }
-  //   };
-  //   document.addEventListener("keydown", handleEscapeClose);
-  //   document.addEventListener("mousedown", handleOutsideClick);
-
-  //   return () => {
-  //     document.removeEventListener("keydown", handleEscapeClose);
-  //     document.removeEventListener("mousedown", handleOutsideClick);
-  //   };
-  // }, [activeModal]);
-
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
