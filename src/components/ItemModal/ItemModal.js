@@ -24,7 +24,7 @@ const ItemModal = ({ selectedCard, onClose, onCardDelete, isLoading }) => {
           onClick={() => {
             onCardDelete(selectedCard);
           }}
-          buttonText={isLoading ? "Saving..." : "Save"}
+          buttontext={isLoading ? "Saving..." : "Save"}
         >
           Delete item
         </button>

@@ -12,6 +12,7 @@ const ToggleSwitch = () => {
         <input
           type="checkbox"
           className="switch__box"
+          value="switch-checkbox"
           onChange={handleToggleSwitchChange}
         />
         <span

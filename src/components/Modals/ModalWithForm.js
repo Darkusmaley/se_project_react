@@ -23,7 +23,7 @@ const ModalWithForm = ({
           <button
             type="submit"
             className="form__submit-button"
-            buttonText={isLoading ? "Saving..." : "Save"}
+            buttontext={isLoading ? "Saving..." : "Save"}
           >
             {buttonText}
           </button>
