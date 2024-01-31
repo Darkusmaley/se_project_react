@@ -11,6 +11,7 @@ import { parseWeatherData } from "../utils/Weatherapi.js";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min.js";
 import api from "../utils/api.js";
+import { deleteClothingItems, addClothingItems } from "../utils/api.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -18,6 +19,7 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItem] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -31,49 +33,56 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleSubmit = (request) => {
+    setIsLoading(true);
+    request()
+      .then(handleCloseModal)
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
+  };
+
   const handleCardDelete = (card) => {
-    api
-      .deleteClothingItems(card._id)
-      .then(() => {
+    const makeRequest = () => {
+      return deleteClothingItems(card._id).then(() => {
         setClothingItem((items) =>
           items.filter((item) => item._id !== card._id)
         );
-        handleCloseModal();
-      })
-      .catch((err) => console.log(err));
+      });
+    };
+    handleSubmit(makeRequest);
   };
 
   const handleAddItemSubmit = (item) => {
-    api
-      .addClothingItems(item)
-      .then((newItem) => {
+    const makeRequest = () => {
+      return addClothingItems(item).then((newItem) => {
         setClothingItem([newItem, ...clothingItems]);
-        console.log(newItem);
-        handleCloseModal();
-      })
-      .catch((err) => console.log(err));
+      });
+    };
+    handleSubmit(makeRequest);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     api
       .getClothingItems()
       .then((items) => {
         setClothingItem(items);
         handleCloseModal();
       })
-      .catch((err) => console.log(err));
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
     getForcastWeather()
       .then((data) => {
         parseWeatherData(data);
         const temperature = parseWeatherData(data);
         setTemp(temperature);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   }, []);
 
   useEffect(() => {
@@ -133,6 +142,7 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "create"}
             handleAddItemSubmit={handleAddItemSubmit}
+            isLoading={isLoading}
           />
         )}
 
@@ -141,6 +151,7 @@ function App() {
             selectedCard={selectedCard}
             onClose={handleCloseModal}
             onCardDelete={handleCardDelete}
+            isLoading={isLoading}
           />
         )}
       </CurrentTemperatureUnitContext.Provider>

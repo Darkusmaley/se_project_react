@@ -43,6 +43,8 @@
   position: absolute;
   bottom: 91px;
   right: 32px;
+  border: none;
+  background-color: #fff;
 }
 
 .image__delete-button:hover {

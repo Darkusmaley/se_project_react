@@ -37,33 +37,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
     },
     {
-      "_id": 56
-    },
-    {
-      "_id": 57
-    },
-    {
-      "_id": 58
-    },
-    {
-      "_id": 59
-    },
-    {
-      "_id": 60
-    },
-    {
-      "_id": 61
-    },
-    {
-      "_id": 62
-    },
-    {
-      "_id": 63
-    },
-    {
-      "_id": 64
-    },
-    {
       "name": "scarf",
       "weather": "cold",
       "imageUrl": "https://eu-images.contentstack.com/v3/assets/blt7dcd2cfbc90d45de/bltf3590877fe05ae6f/633ec071c3ed6a1034872f1c/1-1saren.jpg?format=pjpg&auto=webp&quality=75%2C90&width=3840",

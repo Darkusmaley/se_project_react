@@ -4,17 +4,11 @@ import "./SideBar.css";
 
 const SideBar = ({ profileName }) => {
   return (
-    <div>
-      <div className="sidebar app__section">
-        <div>
-          <img
-            className="sidebar__logo-avatar"
-            src={avatar}
-            alt="Avatar logo"
-          />
-        </div>
-        <div className="sidebar__name">{profileName}</div>
+    <div className="sidebar app__section">
+      <div>
+        <img className="sidebar__logo-avatar" src={avatar} alt="Avatar logo" />
       </div>
+      <h3 className="sidebar__name">{profileName}</h3>
     </div>
   );
 };

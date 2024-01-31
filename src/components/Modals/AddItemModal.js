@@ -11,7 +11,6 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
   };
 
   const handleUrlChange = (e) => {
-    console.log(e.target.value);
     setUrl(e.target.value);
   };
 
