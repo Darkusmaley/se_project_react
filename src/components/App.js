@@ -11,11 +11,7 @@ import { parseWeatherData } from "../utils/Weatherapi.js";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min.js";
 import api from "../utils/api.js";
-import {
-  deleteClothingItems,
-  addClothingItems,
-  checkResponse,
-} from "../utils/api.js";
+import { deleteClothingItems, addClothingItems } from "../utils/api.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -76,7 +72,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setIsLoading(true);
     getForcastWeather()
       .then((data) => {
         parseWeatherData(data);

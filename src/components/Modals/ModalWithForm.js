@@ -1,12 +1,12 @@
 import "./Modal.css";
 import { Modal } from "./Modal";
 const ModalWithForm = ({
+  isLoading,
+  buttontext = isLoading ? "Saving..." : "Save",
   children,
-  buttonText,
   title,
   onClose,
   name,
-  isLoading,
   onSubmit,
 }) => {
   return (
@@ -21,7 +21,7 @@ const ModalWithForm = ({
         <form onSubmit={onSubmit}>
           {children}
           <button type="submit" className="form__submit-button">
-            {(buttonText = isLoading ? "Saving..." : "Add garment")}
+            {buttontext}
           </button>
         </form>
       </div>
