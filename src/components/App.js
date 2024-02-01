@@ -66,15 +66,13 @@ function App() {
   };
 
   useEffect(() => {
-    setIsLoading(true);
     api
       .getClothingItems()
       .then((items) => {
         setClothingItem(items);
         handleCloseModal();
       })
-      .catch(console.error)
-      .finally(() => setIsLoading(false));
+      .catch(console.error);
   }, []);
 
   useEffect(() => {
@@ -85,8 +83,7 @@ function App() {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
       })
-      .catch(console.error)
-      .finally(() => setIsLoading(false));
+      .catch(console.error);
   }, []);
 
   const handleToggleSwitchChange = () => {

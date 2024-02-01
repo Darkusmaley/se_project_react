@@ -6,6 +6,7 @@ const ItemModal = ({
   onClose,
   onCardDelete,
   isLoading,
+  buttontext,
 }) => {
   return (
     <Modal name={name} onClose={onClose}>
@@ -30,9 +31,8 @@ const ItemModal = ({
           onClick={() => {
             onCardDelete(selectedCard);
           }}
-          buttontext={isLoading ? "Saving..." : "Save"}
         >
-          Delete item
+          {(buttontext = isLoading ? "Deleting..." : "Delete")}
         </button>
       </div>
     </Modal>
