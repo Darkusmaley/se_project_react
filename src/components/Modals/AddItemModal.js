@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import ModalWithForm from "./ModalWithForm";
 
-const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
+const AddItemModal = ({
+  handleCloseModal,
+  handleAddItemSubmit,
+  isOpen,
+  isLoading,
+  buttontext = isLoading ? "Saving..." : "Add garment",
+}) => {
   const [name, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
   const [weather, setWeather] = useState("");
@@ -60,7 +66,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
       <p className="form__text">Select the weather type:</p>
       <div>
         <div className="form__weathertypes">
-          <label>
+          <label className="form__Label-checkbox">
             <input
               type="radio"
               id="hot"
@@ -95,6 +101,9 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
             Cold
           </label>
         </div>
+        <button type="submit" className="form__submit-button">
+          {buttontext}
+        </button>
       </div>
     </ModalWithForm>
   );
