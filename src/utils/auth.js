@@ -2,8 +2,8 @@ import { checkResponse } from "./api";
 const baseUrl = "http://localhost:3001";
 const baseHeader = { "Content-Type": "application/json" };
 
-export const registerUser = ({ name, avatar, email, password }) => {
-  return (request(`${baseUrl}/signup`),
+export const register = ({ name, avatar, email, password }) => {
+  return (fetch(`${baseUrl}/signup`),
   {
     method: "Post",
     headers: `${baseHeader}`,
@@ -12,7 +12,7 @@ export const registerUser = ({ name, avatar, email, password }) => {
 };
 
 export const authorizeUser = ({ email, password }) => {
-  return (request(`${baseUrl}/signin`),
+  return (fetch(`${baseUrl}/signin`),
   {
     method: "Post",
     headers: `${baseHeader}`,
@@ -21,7 +21,7 @@ export const authorizeUser = ({ email, password }) => {
 };
 
 export const checkToken = (token) => {
-  return (request(`${baseUrl}/users/me`),
+  return (fetch(`${baseUrl}/users/me`),
   {
     method: "GET",
     headers: {

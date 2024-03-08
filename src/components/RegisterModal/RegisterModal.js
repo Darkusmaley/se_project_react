@@ -1,4 +1,4 @@
-import "./RegisterModalModal.css";
+// import "./RegisterModalModal.css";
 import React, { useState } from "react";
 import ModalWithForm from "../Modals/ModalWithForm";
 import { registerUser } from "../../utils/auth";
@@ -7,10 +7,11 @@ const RegisterModal = ({
   handleCloseModal,
   isOpen,
   isLoading,
+  registerUser,
   buttontext = isLoading ? "Registering..." : "Register",
 }) => {
   const [name, setName] = useState("");
-  const [imageUrl, setUrl] = useState("");
+  const [avatar, setUrl] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -88,7 +89,7 @@ const RegisterModal = ({
             minLength="1"
             className="input"
             placeholder="Avater url"
-            value={imageUrl}
+            value={avatar}
             onChange={handleUrlChange}
           />
         </label>

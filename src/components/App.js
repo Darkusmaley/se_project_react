@@ -6,7 +6,8 @@ import Profile from "./Profile/Profile.js";
 import ItemModal from "./ItemModal/ItemModal.js";
 import AddItemModal from "./Modals/AddItemModal.js";
 import RegisterModal from "./RegisterModal/RegisterModal.js";
-import { registerUser, authorizeUser, checkToken } from "../utils/auth.js";
+import LoginModal from "./LoginModal/LoginModal.js";
+import { register, authorizeUser, checkToken } from "../utils/auth.js";
 import { useEffect, useState } from "react";
 import { getForcastWeather } from "../utils/Weatherapi.js";
 import { parseWeatherData } from "../utils/Weatherapi.js";
@@ -19,7 +20,6 @@ import {
 } from "react-router-dom/cjs/react-router-dom.min.js";
 import api from "../utils/api.js";
 import { deleteClothingItems, addClothingItems } from "../utils/api.js";
-import LoginModal from "./LoginModal/LoginModal.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -97,7 +97,7 @@ function App() {
   };
 
   const registerUser = (user) => {
-    registerUser(user)
+    register(user)
       .then(() => {
         handleCloseModal();
         loginUser(user);
@@ -162,7 +162,7 @@ function App() {
           <Header
             weatherTemp={temp}
             onCreateModal={handleCreateModal}
-            loggedIn={loggedIn}
+            isLoggedIn={isLoggedIn}
             onLogin={handleLoginModal}
             onRegister={handleRegisterModal}
             location={location}
@@ -197,7 +197,7 @@ function App() {
             />
           )}
           {activeModal === "login" && (
-            <LoginModalModal
+            <LoginModal
               handleCloseModal={handleCloseModal}
               isOpen={handleLoginModal}
               loginUser={loginUser}

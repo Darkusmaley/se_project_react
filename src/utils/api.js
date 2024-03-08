@@ -1,4 +1,5 @@
 const baseUrl = "http://localhost:3001";
+const jwt = localStorage.getItem("jwt");
 
 export const checkResponse = (res) => {
   if (res.ok) {
@@ -16,7 +17,7 @@ const getClothingItems = () => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${jwt}`,
     },
   });
 };
@@ -26,7 +27,7 @@ export const addClothingItems = ({ name, imageUrl, weather }) => {
     method: "Post",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${jwt}`,
     },
     body: JSON.stringify({
       name: name,
@@ -41,7 +42,7 @@ export const deleteClothingItems = (id) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${jwt}`,
     },
   });
 };
