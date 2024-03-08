@@ -1,6 +1,5 @@
 import "./Header.css";
 import logo from "../../images/Logo.svg";
-import avatar from "../../images/Avatar.svg";
 import ToggleSwitch from "../TemperatureSwitch/ToggleSwitch";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
@@ -8,7 +7,7 @@ import { useContext } from "react";
 
 const Header = ({ onCreateModal, loggedIn, onRegister, onLogin, location }) => {
   const currentUser = useContext(CurrentUserContext);
-  const profileName = "Terrence Tegegne";
+
   return (
     <header className="header app__section">
       <div className="header__logo">

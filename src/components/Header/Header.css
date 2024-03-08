@@ -45,6 +45,22 @@
   cursor: pointer;
 }
 
+.header__button {
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.header__button:hover {
+  color: #00000099;
+}
+
 .header__logo-image:hover {
   background-color: #00000099;
   border-radius: 5px;

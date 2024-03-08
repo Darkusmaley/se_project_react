@@ -3,12 +3,22 @@ import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothingSection/ClothesSection";
 import "./Profile.css";
 
-const Profile = ({ onSelectCard, onCreateModal, clothingItems }) => {
+const Profile = ({
+  onSelectCard,
+  onCreateModal,
+  clothingItems,
+  logout,
+  editProfile,
+}) => {
   const profileName = "Terrence Tegegne";
   return (
     <div className="profile">
       <div>
-        <SideBar profileName={profileName} />
+        <SideBar
+          profileName={profileName}
+          logout={logout}
+          editProfile={editProfile}
+        />
       </div>
       <div>
         <ClothesSection

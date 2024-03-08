@@ -7,7 +7,13 @@ import ItemModal from "./ItemModal/ItemModal.js";
 import AddItemModal from "./Modals/AddItemModal.js";
 import RegisterModal from "./RegisterModal/RegisterModal.js";
 import LoginModal from "./LoginModal/LoginModal.js";
-import { register, authorizeUser, checkToken } from "../utils/auth.js";
+import {
+  register,
+  authorizeUser,
+  checkToken,
+  getUserData,
+  update,
+} from "../utils/auth.js";
 import { useEffect, useState } from "react";
 import { getForcastWeather } from "../utils/Weatherapi.js";
 import { parseWeatherData } from "../utils/Weatherapi.js";
@@ -16,10 +22,11 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 import {
   Switch,
   Route,
-  Redirect,
+  useHistory,
 } from "react-router-dom/cjs/react-router-dom.min.js";
 import api from "../utils/api.js";
 import { deleteClothingItems, addClothingItems } from "../utils/api.js";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -31,6 +38,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setLogin] = useState(false);
   const [currentUser, setCurrentUSer] = useState({});
+  const history = useHistory("");
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -42,6 +50,10 @@ function App() {
 
   const handleRegisterModal = () => {
     setActiveModal("register");
+  };
+
+  const handleEditProfileModal = () => {
+    setActiveModal("edit");
   };
 
   const handleCloseModal = () => {
@@ -91,7 +103,7 @@ function App() {
         return checkLoggedIn(res.data);
       })
       .catch((err) => {
-        console.err(err);
+        console.error(err);
       })
       .finally(setIsLoading(false));
   };
@@ -103,8 +115,27 @@ function App() {
         loginUser(user);
       })
       .catch((err) => {
-        console.err(err);
+        console.error(err);
       });
+  };
+
+  const updateUser = (user) => {
+    const jwt = localStorage.getItem("jwtF");
+    update(user, jwt)
+      .then((res) => {
+        setCurrentUSer(res.data);
+        handleCloseModal();
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
+
+  const logoutUser = () => {
+    localStorage.removeItem("jwt");
+    setCurrentUSer({});
+    setLogin(false);
+    history.pushState("/");
   };
 
   function checkLoggedIn(token) {
@@ -114,7 +145,7 @@ function App() {
         setCurrentUSer(res.data);
       })
       .catch((err) => {
-        console.err(err);
+        console.error(err);
       });
   }
 
@@ -143,7 +174,20 @@ function App() {
     const jwt = localStorage.getItem("jwt");
 
     if (jwt !== null) {
-      checkLoggedIn(jwt).then(() => {});
+      checkLoggedIn(jwt)
+        .then(() => {
+          getUserData(jwt).then((res) => {
+            setCurrentUSer(res.data);
+          });
+        })
+        .catch((err) => {
+          if (err.response && err.response.status === 401) {
+            console.error("Token expired or invalid. Logging out...");
+            logoutUser();
+          } else {
+            console.error("Error fetching user data:", err);
+          }
+        });
     }
   });
 
@@ -182,6 +226,8 @@ function App() {
                 onSelectCard={handleSelectedCard}
                 onCreateModal={handleCreateModal}
                 isLoggedIn={isLoggedIn}
+                logout={logoutUser}
+                editProfile={handleEditProfileModal}
               />
             </Route>
           </Switch>
@@ -191,16 +237,27 @@ function App() {
           {activeModal === "register" && (
             <RegisterModal
               handleCloseModal={handleCloseModal}
-              isOpen={handleRegisterModal}
+              isOpen={activeModal === "register"}
               registerUser={registerUser}
+              openLoginModal={handleLoginModal}
               isLoading={isLoading}
             />
           )}
           {activeModal === "login" && (
             <LoginModal
               handleCloseModal={handleCloseModal}
-              isOpen={handleLoginModal}
+              isOpen={activeModal === "login"}
               loginUser={loginUser}
+              openRegisterModal={handleRegisterModal}
+              isLoading={isLoading}
+            />
+          )}
+
+          {activeModal === "edit" && (
+            <EditProfileModal
+              handleCloseModal={handleCloseModal}
+              isOpen={activeModal === "edit"}
+              updateUser={updateUser}
               isLoading={isLoading}
             />
           )}

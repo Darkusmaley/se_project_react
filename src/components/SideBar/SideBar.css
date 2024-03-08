@@ -4,6 +4,7 @@
   max-height: 56px;
   align-items: center;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .sidebar__name {
@@ -14,7 +15,12 @@
   letter-spacing: 0em;
   text-align: left;
   max-height: 25px;
-  width: 229px;
+  max-width: 229px;
+}
+
+.sidebar__logo {
+  display: flex;
+  max-width: 229px;
 }
 
 .sidebar__logo-avatar {

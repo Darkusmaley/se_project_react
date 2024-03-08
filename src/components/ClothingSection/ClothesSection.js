@@ -28,8 +28,8 @@ const ClothesSection = ({
 
       <div className="profile__clothes-section">
         {clothingItems.map((item) => {
-          const isOwn = item.owner === currentUser._id;
-          if (isOwn) {
+          const isOwner = item.owner === currentUser._id;
+          if (isOwner) {
             return (
               <ItemCard
                 item={item}

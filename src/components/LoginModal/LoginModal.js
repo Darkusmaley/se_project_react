@@ -1,12 +1,12 @@
 import ModalWithForm from "../Modals/ModalWithForm";
 import React, { useState } from "react";
-import { authorizeUser } from "../../utils/auth";
 
 const LoginModal = ({
   handleCloseModal,
   isOpen,
   isLoading,
   loginUser,
+  openRegisterModal,
   buttontext = isLoading ? "Logging in..." : "Log in",
 }) => {
   const [email, setEmail] = useState("");
@@ -59,10 +59,14 @@ const LoginModal = ({
           />
         </label>
       </div>
-
-      <button type="submit" className="form__submit-button">
-        {buttontext}
-      </button>
+      <div className="form__buttons">
+        <button type="submit" className="form__submit-button">
+          {buttontext}
+        </button>
+        <button className="form__login-button" onClick={openRegisterModal}>
+          or Register
+        </button>
+      </div>
     </ModalWithForm>
   );
 };

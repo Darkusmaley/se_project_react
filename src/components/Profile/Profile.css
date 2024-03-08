@@ -18,3 +18,31 @@
 .profile__link:hover {
   color: #0066cc;
 }
+
+.profile__button {
+  padding: 0;
+  max-width: 175px;
+  max-height: 25px;
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.profile__button:hover {
+  color: #00000099;
+}
+
+.profile__button:last-child {
+  margin-top: 8px;
+}
+
+.profile__options {
+  display: flex;
+  flex-direction: column;
+}

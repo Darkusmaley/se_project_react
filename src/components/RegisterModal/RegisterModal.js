@@ -1,13 +1,13 @@
 // import "./RegisterModalModal.css";
 import React, { useState } from "react";
 import ModalWithForm from "../Modals/ModalWithForm";
-import { registerUser } from "../../utils/auth";
 
 const RegisterModal = ({
   handleCloseModal,
   isOpen,
   isLoading,
   registerUser,
+  openLoginModal,
   buttontext = isLoading ? "Registering..." : "Register",
 }) => {
   const [name, setName] = useState("");
@@ -45,7 +45,7 @@ const RegisterModal = ({
     >
       <div className="form__info">
         <label className="form__label">
-          Email
+          Email*
           <input
             type="text"
             name="email"
@@ -58,7 +58,7 @@ const RegisterModal = ({
           />
         </label>
         <label className="form__label">
-          Password
+          Password*
           <input
             type="text"
             name="password"
@@ -70,7 +70,7 @@ const RegisterModal = ({
           />
         </label>
         <label className="form__label">
-          Name
+          Name*
           <input
             type="text"
             name="name"
@@ -82,10 +82,10 @@ const RegisterModal = ({
           />
         </label>
         <label className="form__label">
-          Avatar URL
+          Avatar URL*
           <input
             type="url"
-            name="password"
+            name="avatar"
             minLength="1"
             className="input"
             placeholder="Avater url"
@@ -94,10 +94,16 @@ const RegisterModal = ({
           />
         </label>
       </div>
+      <div className="form__buttons">
+        <button type="submit" className="form__submit-button">
+          {buttontext}
+        </button>
 
-      <button type="submit" className="form__submit-button">
-        {buttontext}
-      </button>
+        <button className="form__login-button" onClick={openLoginModal}>
+          {" "}
+          or Log in
+        </button>
+      </div>
     </ModalWithForm>
   );
 };
