@@ -5,7 +5,7 @@ import React from "react";
 import { useMemo, useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({ weatherTemp, onSelectCard, clothingItems }) {
+function Main({ weatherTemp, onSelectCard, clothingItems, handleCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit];
   const weatherUnitSwitch = weatherTemp?.temperature?.F;
@@ -17,7 +17,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
     } else if (weatherUnitSwitch <= 65) {
       return "cold";
     }
-  }, [weatherTemp]);
+  }, [weatherUnitSwitch]);
 
   const filterCards = clothingItems.filter((item) => {
     return item.weather === weatherType;
@@ -40,6 +40,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
               item={clothes}
               onSelectCard={onSelectCard}
               key={clothes._id}
+              handleCardLike={handleCardLike}
             />
           ))}
         </div>

@@ -47,10 +47,34 @@ export const deleteClothingItems = (id) => {
   });
 };
 
+export const likeCard = (_id, token) => {
+  return fetch(`${baseUrl}/items/${_id}/likes`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+};
+
+export const unlikeCard = (_id, token) => {
+  return fetch(`${baseUrl}/items/${_id}/likes`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+};
+
 const api = {
   addClothingItems,
   deleteClothingItems,
   getClothingItems,
+  likeCard,
+  unlikeCard,
 };
 
 export default api;

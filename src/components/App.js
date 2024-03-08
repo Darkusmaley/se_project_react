@@ -38,6 +38,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setLogin] = useState(false);
   const [currentUser, setCurrentUSer] = useState({});
+  const [isLiked, setLikes] = useState();
   const history = useHistory("");
 
   const handleCreateModal = () => {
@@ -138,6 +139,31 @@ function App() {
     history.pushState("/");
   };
 
+  const handleCardLike = (id) => {
+    const jwt = localStorage.getItem("jwt");
+
+    if (isLiked) {
+      api
+        .likeCard(id, jwt)
+        .then((updatedCard) => {
+          setClothingItem((cards) =>
+            cards.map((c) => (c._id === id ? updatedCard : c))
+          );
+          setLikes(true);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      api
+        .unlikeCard(id, jwt)
+        .then((updatedCard) => {
+          setClothingItem((cards) =>
+            cards.map((c) => (c._id === id ? updatedCard : c))
+          );
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   function checkLoggedIn(token) {
     return checkToken(token)
       .then((res) => {
@@ -218,6 +244,7 @@ function App() {
                 onSelectCard={handleSelectedCard}
                 clothingItems={clothingItems}
                 isLoggedIn={isLoggedIn}
+                handleCardLike={handleCardLike}
               />
             </Route>
             <Route path="/profile" isLoggedIn={isLoggedIn}>
