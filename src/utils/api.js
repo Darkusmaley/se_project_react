@@ -16,6 +16,7 @@ const getClothingItems = () => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   });
 };
@@ -25,6 +26,7 @@ export const addClothingItems = ({ name, imageUrl, weather }) => {
     method: "Post",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name: name,
@@ -39,6 +41,7 @@ export const deleteClothingItems = (id) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   });
 };
