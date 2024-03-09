@@ -99,7 +99,7 @@ function App() {
     authorizeUser(user)
       .then((res) => {
         handleCloseModal();
-        localStorage.setItem("jwt", res.token);
+        localStorage.setItem("jwt", res.data);
 
         return checkLoggedIn(res.data);
       })
@@ -109,11 +109,11 @@ function App() {
       .finally(setIsLoading(false));
   };
 
-  const registerUser = (user) => {
-    register(user)
+  const registerUser = (values) => {
+    register(values)
       .then(() => {
         handleCloseModal();
-        loginUser(user);
+        loginUser(values);
       })
       .catch((err) => {
         console.error(err);
@@ -215,7 +215,7 @@ function App() {
           }
         });
     }
-  });
+  }, [isLoggedIn]);
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"

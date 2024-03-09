@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import ModalWithForm from "../Modals/ModalWithForm";
 
@@ -95,7 +94,11 @@ const RegisterModal = ({
         </label>
       </div>
       <div className="form__buttons">
-        <button type="submit" className="form__submit-button">
+        <button
+          type="submit"
+          className="form__submit-button"
+          onSubmit={onRegister}
+        >
           {buttontext}
         </button>
 

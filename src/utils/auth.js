@@ -1,11 +1,11 @@
 import { checkResponse } from "./api";
 const baseUrl = "http://localhost:3001";
-const baseHeader = { "Content-Type": "application/json" };
+const baseHeaders = { "Content-Type": "application/json" };
 
 export const register = ({ name, avatar, email, password }) => {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
-    headers: `${baseHeader}`,
+    headers: baseHeaders,
     body: JSON.stringify({ name, avatar, email, password }),
   }).then(checkResponse);
 };
@@ -13,7 +13,7 @@ export const register = ({ name, avatar, email, password }) => {
 export const authorizeUser = ({ email, password }) => {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
-    headers: `${baseHeader}`,
+    headers: baseHeaders,
     body: JSON.stringify({ email, password }),
   }).then(checkResponse);
 };
