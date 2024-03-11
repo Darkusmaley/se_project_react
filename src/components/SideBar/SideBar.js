@@ -10,16 +10,17 @@ const SideBar = ({ editProfile, logout }) => {
       <div className="sidebar__logo">
         <img
           className="sidebar__logo-avatar"
+          placeholder={currentUser.name}
           src={currentUser.avatar}
           alt="Avatar logo"
         />
-        <h3 className="sidebar__name">{currentUser.name}</h3>
+        <h3 className="sidebar__name">{currentUser?.name}</h3>
       </div>
       <div className="profile__options">
         <button type="button" className="profile__button" onClick={editProfile}>
           Change Profile Data
         </button>
-        <button type="button" className="profile__button" onclick={logout}>
+        <button type="button" className="profile__button" onClick={logout}>
           Log out
         </button>
       </div>

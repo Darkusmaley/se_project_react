@@ -88,8 +88,10 @@ function App() {
   };
 
   const handleAddItemSubmit = (item) => {
+   
     const makeRequest = () => {
       return addClothingItems(item).then((newItem) => {
+        console.log(newItem)
         setClothingItem([newItem, ...clothingItems]);
       });
     };
@@ -101,11 +103,9 @@ function App() {
     authorizeUser(user)
       .then((res) => {
         console.log(user);
-        setLogin(true);
         localStorage.setItem("jwt", res.token);
         handleCloseModal();
-        setCurrentUser(user.name, user.avatar);
-        return checkLoggedIn(res.data);
+        return checkLoggedIn(res.user);
       })
       .catch((err) => {
         console.error(err);
@@ -125,9 +125,10 @@ function App() {
   };
 
   const updateUser = (user) => {
-    update(user)
+    const jwt = localStorage.getItem("jwt");
+    update(user, jwt)
       .then((res) => {
-        setCurrentUser(res.data);
+        setCurrentUser(res);
         handleCloseModal();
       })
       .catch((e) => {
@@ -139,7 +140,7 @@ function App() {
     localStorage.removeItem("jwt");
     setCurrentUser({});
     setLogin(false);
-    history.pushState("/");
+    history.push("/");
   };
 
   const handleCardLike = (id) => {
@@ -171,9 +172,9 @@ function App() {
     const jwt = localStorage.getItem("jwt");
     return checkToken(jwt)
       .then((res) => {
-        console.log(res);
+        console.log(res.user);
         setLogin(true);
-        setCurrentUser(res.data);
+        setCurrentUser(res.user);
       })
       .catch((err) => {
         console.error(err);
@@ -181,14 +182,16 @@ function App() {
   }
 
   useEffect(() => {
-    api
-      .getClothingItems()
-      .then((items) => {
-        setClothingItem(items);
-        handleCloseModal();
-      })
-      .catch(console.error);
-  }, []);
+    if (isLoggedIn) {
+      api
+        .getClothingItems()
+        .then((items) => {
+          setClothingItem(items);
+          handleCloseModal();
+        })
+        .catch(console.error);
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     getForcastWeather()
@@ -206,8 +209,7 @@ function App() {
     if (jwt) {
       getUserData(jwt)
         .then((res) => {
-          console.log(res);
-          setCurrentUser(res);
+          setCurrentUser(res.user);
         })
 
         .catch((err) => {
@@ -256,7 +258,6 @@ function App() {
                 clothingItems={clothingItems}
                 onSelectCard={handleSelectedCard}
                 onCreateModal={handleCreateModal}
-                isLoggedIn={isLoggedIn}
                 logout={logoutUser}
                 editProfile={handleEditProfileModal}
               />

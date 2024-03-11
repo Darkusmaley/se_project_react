@@ -5,7 +5,13 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 
-const Header = ({ onCreateModal, isLoggedIn, onRegister, onLogin, location }) => {
+const Header = ({
+  onCreateModal,
+  isLoggedIn,
+  onRegister,
+  onLogin,
+  location,
+}) => {
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -37,13 +43,14 @@ const Header = ({ onCreateModal, isLoggedIn, onRegister, onLogin, location }) =>
             </div>
             <div>
               <Link to="/profile" className="profile__link">
-                {currentUser.name}
+                {currentUser?.name}
               </Link>
             </div>
             <div>
               <img
                 className="header__logo-avatar-image"
-                src={currentUser.avatar}
+                src={currentUser?.avatar}
+                placeholder={currentUser?.name}
                 alt="Avatar logo"
               />
             </div>

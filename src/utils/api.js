@@ -11,7 +11,7 @@ function request(url, options) {
   return fetch(url, options).then(checkResponse);
 }
 
-const getClothingItems = (jwt) => {
+export const getClothingItems = (jwt) => {
   return request(`${baseUrl}/items`, {
     method: "GET",
     headers: {

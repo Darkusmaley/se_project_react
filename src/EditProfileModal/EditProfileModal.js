@@ -27,9 +27,9 @@ const EditProfileModal = ({
   };
 
   useEffect(() => {
-    setName(currentUser.name);
-    setUrl(currentUser.avatar);
-  }, [currentUser.name, currentUser.avatar]);
+    setName(currentUser?.name);
+    setUrl(currentUser?.avatar);
+  }, [currentUser?.name, currentUser?.avatar]);
 
   return (
     <ModalWithForm
@@ -45,20 +45,23 @@ const EditProfileModal = ({
             type="text"
             name="name"
             minLength="1"
+            maxLength="45"
+            required
             className="input"
-            placeholder="Name"
-            value={currentUser.name}
+            placeholder={currentUser.name}
+            value={name}
             onChange={handleNameChange}
           />
         </label>
         <label className="form__label">
-          Avatar
+          Avatar*
           <input
             type="url"
             name="avatar"
             minLength="1"
             className="input"
-            placeholder={currentUser.avatar}
+            required
+             placeholder={currentUser.avatar}
             value={avatar}
             onChange={handleUrlChange}
           />
