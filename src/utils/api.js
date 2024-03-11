@@ -16,7 +16,7 @@ export const getClothingItems = (jwt) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${jwt}`,
+      "authorization": `Bearer ${jwt}`,
     },
   });
 };
@@ -26,7 +26,7 @@ export const addClothingItems = ({ name, imageUrl, weather }, jwt) => {
     method: "Post",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${jwt}`,
+      "authorization": `Bearer ${jwt}`,
     },
     body: JSON.stringify({
       name: name,
@@ -41,7 +41,7 @@ export const deleteClothingItems = (id, jwt) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${jwt}`,
+      "authorization": `Bearer ${jwt}`,
     },
   });
 };
@@ -52,7 +52,7 @@ export const likeCard = (_id, token) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      "authorization": `Bearer ${token}`,
     },
   }).then(checkResponse);
 };
@@ -63,7 +63,7 @@ export const unlikeCard = (_id, token) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      "authorization": `Bearer ${token}`,
     },
   }).then(checkResponse);
 };

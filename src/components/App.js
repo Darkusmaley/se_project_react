@@ -87,11 +87,9 @@ function App() {
     handleSubmit(makeRequest);
   };
 
-  const handleAddItemSubmit = (item) => {
-   
+  const handleAddItemSubmit = (item, jwt) => {
     const makeRequest = () => {
-      return addClothingItems(item).then((newItem) => {
-        console.log(newItem)
+      return addClothingItems(item, jwt).then((newItem) => {
         setClothingItem([newItem, ...clothingItems]);
       });
     };
@@ -102,7 +100,7 @@ function App() {
     setIsLoading(true);
     authorizeUser(user)
       .then((res) => {
-        console.log(user);
+        console.log(res);
         localStorage.setItem("jwt", res.token);
         handleCloseModal();
         return checkLoggedIn(res.user);
@@ -172,7 +170,6 @@ function App() {
     const jwt = localStorage.getItem("jwt");
     return checkToken(jwt)
       .then((res) => {
-        console.log(res.user);
         setLogin(true);
         setCurrentUser(res.user);
       })
@@ -207,18 +204,23 @@ function App() {
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
-      getUserData(jwt)
-        .then((res) => {
-          setCurrentUser(res.user);
+      checkLoggedIn(jwt)
+        .then(() => {
+          getUserData(jwt)
+            .then((res) => {
+              setCurrentUser(res.user);
+            })
+            .catch((err) => {
+              if (err.response && err.response.status === 401) {
+                console.error("Token expired or invalid. Logging out...");
+                logoutUser();
+              } else {
+                console.error("Error fetching user data:", err);
+              }
+            });
         })
-
         .catch((err) => {
-          if (err.response && err.response.status === 401) {
-            console.error("Token expired or invalid. Logging out...");
-            logoutUser();
-          } else {
-            console.error("Error fetching user data:", err);
-          }
+          console.error(err);
         });
     }
   }, [isLoggedIn]);
