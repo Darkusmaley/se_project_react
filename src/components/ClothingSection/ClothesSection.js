@@ -8,7 +8,8 @@ const ClothesSection = ({
   clothingItems,
   onSelectCard,
   onCreateModal,
-  loggedIn,
+  isloggedIn,
+  handleCardLike,
 }) => {
   const currentUser = useContext(CurrentUserContext);
   return (
@@ -35,7 +36,8 @@ const ClothesSection = ({
                 item={item}
                 onSelectCard={onSelectCard}
                 key={item._id}
-                loggedIn={loggedIn}
+                isloggedIn={isloggedIn}
+                handleCardLike={handleCardLike}
               />
             );
           } else return null;

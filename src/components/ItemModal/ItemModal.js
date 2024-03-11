@@ -13,9 +13,7 @@ const ItemModal = ({
 }) => {
   const currentUser = useContext(CurrentUserContext);
   const isOwner = selectedCard.owner === currentUser._id;
-  const itemDeleteButtonClassName = `item__delete-button${
-    isOwner ? "item__delete-button_visible" : "item_delete-button_hidden"
-  }`;
+
   return (
     <Modal name={name} onClose={onClose}>
       <div className="modal__content image__preview-content">
@@ -36,7 +34,7 @@ const ItemModal = ({
         <>
           {isOwner ? (
             <button
-              className={itemDeleteButtonClassName}
+              className="image__delete-button"
               type="button"
               onClick={() => {
                 onCardDelete(selectedCard);

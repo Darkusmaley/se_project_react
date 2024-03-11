@@ -32,3 +32,18 @@
   width: 325px;
   height: 328px;
 }
+
+.itemcard__likebutton {
+  background-image: url("../../images/Like\ button.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(250, 250, 250, 0);
+  width: 20px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.itemcard__likebutton_liked {
+  background-image: url("../../images/heart-Liked.svg");
+}

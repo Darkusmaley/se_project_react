@@ -2,22 +2,24 @@ import "./ItemCard.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-const ItemCard = ({ item, onSelectCard, handleCardLike, loggedIn }) => {
+const ItemCard = ({ item, onSelectCard, handleCardLike, isloggedIn }) => {
   const currentUser = useContext(CurrentUserContext);
   const id = item._id;
-  const isLiked = item.likes.includes(currentUser._id);
+  const isLiked = item.likes.some((user) => {
+    return user.includes(currentUser?._id);
+  });
   const likeButtonClass = `itemcard__likebutton ${
-    isLiked ? "itemcard__likebutton-visible" : ""
+    isLiked ? "itemcard__likebutton_liked" : ""
   }`;
 
   const handleLike = () => {
-    handleCardLike(id);
+    handleCardLike(id, isLiked);
   };
 
   return (
     <div className="card__container">
       <div>
-        {loggedIn && (
+        {isloggedIn && (
           <button
             className={likeButtonClass}
             type="button"

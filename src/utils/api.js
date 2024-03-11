@@ -16,7 +16,7 @@ export const getClothingItems = (jwt) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "authorization": `Bearer ${jwt}`,
+      authorization: `Bearer ${jwt}`,
     },
   });
 };
@@ -26,7 +26,7 @@ export const addClothingItems = ({ name, imageUrl, weather }, jwt) => {
     method: "Post",
     headers: {
       "Content-Type": "application/json",
-      "authorization": `Bearer ${jwt}`,
+      authorization: `Bearer ${jwt}`,
     },
     body: JSON.stringify({
       name: name,
@@ -41,29 +41,31 @@ export const deleteClothingItems = (id, jwt) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      "authorization": `Bearer ${jwt}`,
+      authorization: `Bearer ${jwt}`,
     },
   });
 };
 
-export const likeCard = (_id, token) => {
+export const likeCard = (_id) => {
+  const jwt = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/items/${_id}/likes`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "authorization": `Bearer ${token}`,
+      authorization: `Bearer ${jwt}`,
     },
   }).then(checkResponse);
 };
 
 export const unlikeCard = (_id, token) => {
+  const jwt = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/items/${_id}/likes`, {
     method: "DELETE",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "authorization": `Bearer ${token}`,
+      authorization: `Bearer ${jwt}`,
     },
   }).then(checkResponse);
 };

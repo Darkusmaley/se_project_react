@@ -141,12 +141,12 @@ function App() {
     history.push("/");
   };
 
-  const handleCardLike = (id) => {
-    const jwt = localStorage.getItem("jwt");
+  const handleCardLike = (id, isLiked) => {
+    // const jwt = localStorage.getItem("jwt");
 
-    if (isLiked) {
+    if (!isLiked) {
       api
-        .likeCard(id, jwt)
+        .likeCard(id)
         .then((updatedCard) => {
           setClothingItem((cards) =>
             cards.map((c) => (c._id === id ? updatedCard : c))
@@ -156,11 +156,12 @@ function App() {
         .catch((err) => console.log(err));
     } else {
       api
-        .unlikeCard(id, jwt)
+        .unlikeCard(id)
         .then((updatedCard) => {
           setClothingItem((cards) =>
             cards.map((c) => (c._id === id ? updatedCard : c))
           );
+          setLikes(false);
         })
         .catch((err) => console.log(err));
     }
@@ -262,6 +263,8 @@ function App() {
                 onCreateModal={handleCreateModal}
                 logout={logoutUser}
                 editProfile={handleEditProfileModal}
+                isloggedIn={isLoggedIn}
+                handleCardLike={handleCardLike}
               />
             </Route>
           </Switch>
