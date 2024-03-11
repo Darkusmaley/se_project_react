@@ -18,21 +18,20 @@ const ItemCard = ({ item, onSelectCard, handleCardLike, isloggedIn }) => {
 
   return (
     <div className="card__container">
-      <div>
-        {isloggedIn && (
-          <button
-            className={likeButtonClass}
-            type="button"
-            onClick={handleLike}
-          ></button>
-        )}
-        <img
-          src={item.imageUrl}
-          className="card__section-image"
-          onClick={() => onSelectCard(item)}
-          alt={item.name}
-        />
-      </div>
+      {isloggedIn && (
+        <button
+          className={likeButtonClass}
+          type="button"
+          onClick={handleLike}
+        ></button>
+      )}
+      <img
+        src={item.imageUrl}
+        className="card__section-image"
+        onClick={() => onSelectCard(item)}
+        alt={item.name}
+      />
+
       <h3 className="card__name">{item.name}</h3>
     </div>
   );

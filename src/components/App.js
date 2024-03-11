@@ -100,7 +100,6 @@ function App() {
     setIsLoading(true);
     authorizeUser(user)
       .then((res) => {
-        console.log(res);
         localStorage.setItem("jwt", res.token);
         handleCloseModal();
         return checkLoggedIn(res.user);
@@ -256,7 +255,7 @@ function App() {
                 handleCardLike={handleCardLike}
               />
             </Route>
-            <Route path="/profile" isLoggedIn={isLoggedIn}>
+            <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
               <Profile
                 clothingItems={clothingItems}
                 onSelectCard={handleSelectedCard}
@@ -266,7 +265,7 @@ function App() {
                 isloggedIn={isLoggedIn}
                 handleCardLike={handleCardLike}
               />
-            </Route>
+            </ProtectedRoute>
           </Switch>
 
           <Footer />

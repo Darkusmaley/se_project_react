@@ -36,8 +36,9 @@ export const addClothingItems = ({ name, imageUrl, weather }, jwt) => {
   });
 };
 
-export const deleteClothingItems = (id, jwt) => {
-  return request(`${baseUrl}/items/${id}`, {
+export const deleteClothingItems = (_id) => {
+  const jwt = localStorage.getItem("jwt");
+  return request(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

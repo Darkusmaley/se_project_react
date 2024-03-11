@@ -21,6 +21,7 @@
 .sidebar__logo {
   display: flex;
   max-width: 229px;
+  gap: 10px;
 }
 
 .sidebar__logo-avatar {
