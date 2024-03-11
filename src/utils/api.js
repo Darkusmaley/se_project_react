@@ -1,5 +1,4 @@
 const baseUrl = "http://localhost:3001";
-const jwt = localStorage.getItem("jwt");
 
 export const checkResponse = (res) => {
   if (res.ok) {
@@ -12,7 +11,7 @@ function request(url, options) {
   return fetch(url, options).then(checkResponse);
 }
 
-const getClothingItems = () => {
+const getClothingItems = (jwt) => {
   return request(`${baseUrl}/items`, {
     method: "GET",
     headers: {
@@ -22,7 +21,7 @@ const getClothingItems = () => {
   });
 };
 
-export const addClothingItems = ({ name, imageUrl, weather }) => {
+export const addClothingItems = ({ name, imageUrl, weather }, jwt) => {
   return request(`${baseUrl}/items`, {
     method: "Post",
     headers: {
@@ -37,7 +36,7 @@ export const addClothingItems = ({ name, imageUrl, weather }) => {
   });
 };
 
-export const deleteClothingItems = (id) => {
+export const deleteClothingItems = (id, jwt) => {
   return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {

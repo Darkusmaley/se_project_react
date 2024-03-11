@@ -7,6 +7,7 @@ import ItemModal from "./ItemModal/ItemModal.js";
 import AddItemModal from "./Modals/AddItemModal.js";
 import RegisterModal from "./RegisterModal/RegisterModal.js";
 import LoginModal from "./LoginModal/LoginModal.js";
+import ProtectedRoute from "../utils/ProtectedRoute.js";
 import {
   register,
   authorizeUser,
@@ -37,8 +38,9 @@ function App() {
   const [clothingItems, setClothingItem] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setLogin] = useState(false);
-  const [currentUser, setCurrentUSer] = useState({});
+  const [currentUser, setCurrentUser] = useState({});
   const [isLiked, setLikes] = useState();
+
   const history = useHistory("");
 
   const handleCreateModal = () => {
@@ -98,9 +100,11 @@ function App() {
     setIsLoading(true);
     authorizeUser(user)
       .then((res) => {
+        console.log(user);
+        setLogin(true);
+        localStorage.setItem("jwt", res.token);
         handleCloseModal();
-        localStorage.setItem("jwt", res.data);
-
+        setCurrentUser(user.name, user.avatar);
         return checkLoggedIn(res.data);
       })
       .catch((err) => {
@@ -111,9 +115,9 @@ function App() {
 
   const registerUser = (values) => {
     register(values)
-      .then(() => {
+      .then((user) => {
         handleCloseModal();
-        loginUser(values);
+        loginUser(user);
       })
       .catch((err) => {
         console.error(err);
@@ -121,10 +125,9 @@ function App() {
   };
 
   const updateUser = (user) => {
-    const jwt = localStorage.getItem("jwtF");
-    update(user, jwt)
+    update(user)
       .then((res) => {
-        setCurrentUSer(res.data);
+        setCurrentUser(res.data);
         handleCloseModal();
       })
       .catch((e) => {
@@ -134,7 +137,7 @@ function App() {
 
   const logoutUser = () => {
     localStorage.removeItem("jwt");
-    setCurrentUSer({});
+    setCurrentUser({});
     setLogin(false);
     history.pushState("/");
   };
@@ -164,11 +167,13 @@ function App() {
     }
   };
 
-  function checkLoggedIn(token) {
-    return checkToken(token)
+  function checkLoggedIn() {
+    const jwt = localStorage.getItem("jwt");
+    return checkToken(jwt)
       .then((res) => {
+        console.log(res);
         setLogin(true);
-        setCurrentUSer(res.data);
+        setCurrentUser(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -198,14 +203,13 @@ function App() {
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
-
-    if (jwt !== null) {
-      checkLoggedIn(jwt)
-        .then(() => {
-          getUserData(jwt).then((res) => {
-            setCurrentUSer(res.data);
-          });
+    if (jwt) {
+      getUserData(jwt)
+        .then((res) => {
+          console.log(res);
+          setCurrentUser(res);
         })
+
         .catch((err) => {
           if (err.response && err.response.status === 401) {
             console.error("Token expired or invalid. Logging out...");

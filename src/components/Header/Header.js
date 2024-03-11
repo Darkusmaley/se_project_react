@@ -5,7 +5,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 
-const Header = ({ onCreateModal, loggedIn, onRegister, onLogin, location }) => {
+const Header = ({ onCreateModal, isLoggedIn, onRegister, onLogin, location }) => {
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -23,7 +23,7 @@ const Header = ({ onCreateModal, loggedIn, onRegister, onLogin, location }) => {
 
       <div className="header__avatar">
         <ToggleSwitch />
-        {loggedIn ? (
+        {isLoggedIn ? (
           <>
             <div>
               <button
@@ -37,7 +37,7 @@ const Header = ({ onCreateModal, loggedIn, onRegister, onLogin, location }) => {
             </div>
             <div>
               <Link to="/profile" className="profile__link">
-                {currentUser.profileName}
+                {currentUser.name}
               </Link>
             </div>
             <div>
