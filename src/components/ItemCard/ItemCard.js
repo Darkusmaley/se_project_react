@@ -31,7 +31,6 @@ const ItemCard = ({ item, onSelectCard, handleCardLike, isloggedIn }) => {
         onClick={() => onSelectCard(item)}
         alt={item.name}
       />
-
       <h3 className="card__name">{item.name}</h3>
     </div>
   );

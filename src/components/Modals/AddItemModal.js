@@ -25,9 +25,8 @@ const AddItemModal = ({
   };
 
   const handleSubmit = (e) => {
-    const jwt = localStorage.getItem("jwt");
     e.preventDefault();
-    handleAddItemSubmit({ name, imageUrl, weather }, jwt);
+    handleAddItemSubmit({ name, imageUrl, weather });
   };
 
   return (
@@ -55,7 +54,7 @@ const AddItemModal = ({
           Image
           <input
             type="url"
-            name="link"
+            name="imageUrl"
             minLength="1"
             className="input"
             placeholder="Image Url"

@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import ModalWithForm from "../components/Modals/ModalWithForm";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import ModalWithForm from "../Modals/ModalWithForm";
 
 const EditProfileModal = ({
   handleCloseModal,
@@ -61,7 +61,7 @@ const EditProfileModal = ({
             minLength="1"
             className="input"
             required
-             placeholder={currentUser.avatar}
+            placeholder={currentUser.avatar}
             value={avatar}
             onChange={handleUrlChange}
           />

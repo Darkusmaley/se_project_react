@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothingSection/ClothesSection";
 import "./Profile.css";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const Profile = ({
   onSelectCard,
@@ -12,12 +13,12 @@ const Profile = ({
   isloggedIn,
   handleCardLike,
 }) => {
-  const profileName = "Terrence Tegegne";
+  const currentUser = useContext(CurrentUserContext);
   return (
     <div className="profile">
       <div>
         <SideBar
-          profileName={profileName}
+          profileName={currentUser?.name}
           logout={logout}
           editProfile={editProfile}
         />

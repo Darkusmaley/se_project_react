@@ -60,11 +60,7 @@ const LoginModal = ({
         </label>
       </div>
       <div className="form__buttons">
-        <button
-          type="submit"
-          className="form__submit-button"
-          onSubmit={onLogin}
-        >
+        <button type="submit" className="form__submit-button">
           {buttontext}
         </button>
         <button className="form__login-button" onClick={openRegisterModal}>

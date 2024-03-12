@@ -7,11 +7,12 @@ export const checkResponse = (res) => {
   return Promise.reject(`Error:${res.status}`);
 };
 
-function request(url, options) {
+export function request(url, options) {
   return fetch(url, options).then(checkResponse);
 }
 
-export const getClothingItems = (jwt) => {
+export const getClothingItems = () => {
+  const jwt = localStorage.getItem("jwt");
   return request(`${baseUrl}/items`, {
     method: "GET",
     headers: {
@@ -21,7 +22,8 @@ export const getClothingItems = (jwt) => {
   });
 };
 
-export const addClothingItems = ({ name, imageUrl, weather }, jwt) => {
+export const addClothingItems = ({ name, imageUrl, weather }) => {
+  const jwt = localStorage.getItem("jwt");
   return request(`${baseUrl}/items`, {
     method: "Post",
     headers: {

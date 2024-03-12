@@ -15,6 +15,7 @@
   text-align: left;
   color: #00000099;
   background-color: white;
+  right: 150px;
 }
 
 .card__items {
@@ -43,9 +44,9 @@
   height: 20px;
   border: none;
   cursor: pointer;
-  position: relative;
-  left: 27px;
-  top: 17px;
+  position: absolute;
+  right: 125px;
+  top: 16px;
 }
 
 .itemcard__likebutton_liked {

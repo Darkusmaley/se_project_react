@@ -7,7 +7,7 @@ import ItemModal from "./ItemModal/ItemModal.js";
 import AddItemModal from "./Modals/AddItemModal.js";
 import RegisterModal from "./RegisterModal/RegisterModal.js";
 import LoginModal from "./LoginModal/LoginModal.js";
-import ProtectedRoute from "../utils/ProtectedRoute.js";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute.js";
 import {
   register,
   authorizeUser,
@@ -27,7 +27,7 @@ import {
 } from "react-router-dom/cjs/react-router-dom.min.js";
 import api from "../utils/api.js";
 import { deleteClothingItems, addClothingItems } from "../utils/api.js";
-import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
+import EditProfileModal from "../components/EditProfileModal/EditProfileModal.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -87,9 +87,9 @@ function App() {
     handleSubmit(makeRequest);
   };
 
-  const handleAddItemSubmit = (item, jwt) => {
+  const handleAddItemSubmit = (item) => {
     const makeRequest = () => {
-      return addClothingItems(item, jwt).then((newItem) => {
+      return addClothingItems(item).then((newItem) => {
         setClothingItem([newItem, ...clothingItems]);
       });
     };
@@ -101,24 +101,22 @@ function App() {
     authorizeUser(user)
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        handleCloseModal();
         return checkLoggedIn(res.user);
       })
       .catch((err) => {
         console.error(err);
       })
-      .finally(setIsLoading(false));
+      .finally(() => {
+        handleSubmit();
+      });
   };
 
   const registerUser = (values) => {
     register(values)
       .then((user) => {
-        handleCloseModal();
         loginUser(user);
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error());
   };
 
   const updateUser = (user) => {
@@ -126,11 +124,9 @@ function App() {
     update(user, jwt)
       .then((res) => {
         setCurrentUser(res);
-        handleCloseModal();
       })
-      .catch((e) => {
-        console.error(e);
-      });
+      .catch(console.error())
+      .finally(handleSubmit());
   };
 
   const logoutUser = () => {
@@ -141,8 +137,6 @@ function App() {
   };
 
   const handleCardLike = (id, isLiked) => {
-    // const jwt = localStorage.getItem("jwt");
-
     if (!isLiked) {
       api
         .likeCard(id)
@@ -152,7 +146,7 @@ function App() {
           );
           setLikes(true);
         })
-        .catch((err) => console.log(err));
+        .catch(console.log());
     } else {
       api
         .unlikeCard(id)
@@ -162,7 +156,7 @@ function App() {
           );
           setLikes(false);
         })
-        .catch((err) => console.log(err));
+        .catch(console.log());
     }
   };
 
@@ -173,9 +167,7 @@ function App() {
         setLogin(true);
         setCurrentUser(res.user);
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error());
   }
 
   useEffect(() => {
@@ -186,7 +178,7 @@ function App() {
           setClothingItem(items);
           handleCloseModal();
         })
-        .catch(console.error);
+        .catch(console.error());
     }
   }, [isLoggedIn]);
 
@@ -198,7 +190,7 @@ function App() {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
       })
-      .catch(console.error);
+      .catch(console.error());
   }, []);
 
   useEffect(() => {
@@ -219,9 +211,7 @@ function App() {
               }
             });
         })
-        .catch((err) => {
-          console.error(err);
-        });
+        .catch(console.error());
     }
   }, [isLoggedIn]);
 
