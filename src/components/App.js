@@ -98,17 +98,18 @@ function App() {
 
   const loginUser = (user) => {
     setIsLoading(true);
-    authorizeUser(user)
-      .then((res) => {
-        localStorage.setItem("jwt", res.token);
-        return checkLoggedIn(res.user);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        handleSubmit();
-      });
+    const makeRequest = () => {
+      return authorizeUser(user)
+        .then((res) => {
+          localStorage.setItem("jwt", res.token);
+
+          return checkLoggedIn(res.user);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+    handleSubmit(makeRequest);
   };
 
   const registerUser = (values) => {
@@ -121,12 +122,14 @@ function App() {
 
   const updateUser = (user) => {
     const jwt = localStorage.getItem("jwt");
-    update(user, jwt)
-      .then((res) => {
-        setCurrentUser(res);
-      })
-      .catch(console.error())
-      .finally(handleSubmit());
+    const makeRequest = () => {
+      return update(user, jwt)
+        .then((res) => {
+          setCurrentUser(res);
+        })
+        .catch(console.error());
+    };
+    handleSubmit(makeRequest);
   };
 
   const logoutUser = () => {

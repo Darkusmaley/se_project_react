@@ -41,16 +41,15 @@ function Main({
         Today is {temp}
         {currentTemperatureUnit === "F" ? "°F" : "°C"} / You may want to wear:
         <div className="card__items">
-          {filterCards.map((clothes) => (
-            <ItemCard
-              isLikeed
-              item={clothes}
-              onSelectCard={onSelectCard}
-              key={clothes._id}
-              handleCardLike={handleCardLike}
-              isloggedIn={isLoggedIn}
-            />
-          ))}
+          {filterCards.map((clothes) => {
+            return (
+              <ItemCard
+                item={clothes}
+                onSelectCard={onSelectCard}
+                key={clothes._id}
+              />
+            );
+          })}
         </div>
       </section>
     </main>
