@@ -174,16 +174,13 @@ function App() {
   }
 
   useEffect(() => {
-    if (isLoggedIn) {
-      api
-        .getClothingItems()
-        .then((items) => {
-          setClothingItem(items);
-          handleCloseModal();
-        })
-        .catch(console.error());
-    }
-  }, [isLoggedIn]);
+    api
+      .getClothingItems()
+      .then((items) => {
+        setClothingItem(items);
+      })
+      .catch(console.error());
+  }, []);
 
   useEffect(() => {
     getForcastWeather()
