@@ -113,8 +113,8 @@ function App() {
       .then((user) => {
         loginUser(user);
       })
-      .catch(() => {
-        console.error();
+      .catch((err) => {
+        console.error(err);
       });
   };
 
@@ -145,8 +145,8 @@ function App() {
           );
           setLikes(true);
         })
-        .catch(() => {
-          console.error();
+        .catch((err) => {
+          console.error(err);
         });
     } else {
       api
@@ -157,8 +157,8 @@ function App() {
           );
           setLikes(false);
         })
-        .catch(() => {
-          console.error();
+        .catch((err) => {
+          console.error(err);
         });
     }
   };
@@ -170,8 +170,8 @@ function App() {
         setLogin(true);
         setCurrentUser(res.user);
       })
-      .catch(() => {
-        console.error();
+      .catch((err) => {
+        console.error(err);
       });
   }
 
@@ -181,8 +181,8 @@ function App() {
       .then((items) => {
         setClothingItem(items);
       })
-      .catch(() => {
-        console.error();
+      .catch((err) => {
+        console.error(err);
       });
   }, []);
 
@@ -194,8 +194,8 @@ function App() {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
       })
-      .catch(() => {
-        console.error();
+      .catch((err) => {
+        console.error(err);
       });
   }, []);
 
@@ -217,8 +217,8 @@ function App() {
               }
             });
         })
-        .catch(() => {
-          console.error();
+        .catch((err) => {
+          console.error(err);
         });
     }
   }, [isLoggedIn]);
