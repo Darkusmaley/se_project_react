@@ -99,15 +99,11 @@ function App() {
   const loginUser = (user) => {
     setIsLoading(true);
     const makeRequest = () => {
-      return authorizeUser(user)
-        .then((res) => {
-          localStorage.setItem("jwt", res.token);
+      return authorizeUser(user).then((res) => {
+        localStorage.setItem("jwt", res.token);
 
-          return checkLoggedIn(res.user);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+        return checkLoggedIn(res.user);
+      });
     };
     handleSubmit(makeRequest);
   };
@@ -117,17 +113,17 @@ function App() {
       .then((user) => {
         loginUser(user);
       })
-      .catch(console.error());
+      .catch(() => {
+        console.error();
+      });
   };
 
   const updateUser = (user) => {
     const jwt = localStorage.getItem("jwt");
     const makeRequest = () => {
-      return update(user, jwt)
-        .then((res) => {
-          setCurrentUser(res);
-        })
-        .catch(console.error());
+      return update(user, jwt).then((res) => {
+        setCurrentUser(res);
+      });
     };
     handleSubmit(makeRequest);
   };
@@ -149,7 +145,9 @@ function App() {
           );
           setLikes(true);
         })
-        .catch(console.log());
+        .catch(() => {
+          console.error();
+        });
     } else {
       api
         .unlikeCard(id)
@@ -159,7 +157,9 @@ function App() {
           );
           setLikes(false);
         })
-        .catch(console.log());
+        .catch(() => {
+          console.error();
+        });
     }
   };
 
@@ -170,7 +170,9 @@ function App() {
         setLogin(true);
         setCurrentUser(res.user);
       })
-      .catch(console.error());
+      .catch(() => {
+        console.error();
+      });
   }
 
   useEffect(() => {
@@ -179,7 +181,9 @@ function App() {
       .then((items) => {
         setClothingItem(items);
       })
-      .catch(console.error());
+      .catch(() => {
+        console.error();
+      });
   }, []);
 
   useEffect(() => {
@@ -190,7 +194,9 @@ function App() {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
       })
-      .catch(console.error());
+      .catch(() => {
+        console.error();
+      });
   }, []);
 
   useEffect(() => {
@@ -211,7 +217,9 @@ function App() {
               }
             });
         })
-        .catch(console.error());
+        .catch(() => {
+          console.error();
+        });
     }
   }, [isLoggedIn]);
 

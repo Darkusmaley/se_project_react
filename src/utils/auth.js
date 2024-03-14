@@ -1,4 +1,4 @@
-import { checkResponse, request } from "./api";
+import { request } from "./api";
 const baseUrl = "http://localhost:3001";
 const baseHeaders = { "Content-Type": "application/json" };
 

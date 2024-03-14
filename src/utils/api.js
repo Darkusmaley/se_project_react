@@ -51,26 +51,26 @@ export const deleteClothingItems = (_id) => {
 
 export const likeCard = (_id) => {
   const jwt = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items/${_id}/likes`, {
+  return request(`${baseUrl}/items/${_id}/likes`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
       authorization: `Bearer ${jwt}`,
     },
-  }).then(checkResponse);
+  });
 };
 
 export const unlikeCard = (_id) => {
   const jwt = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items/${_id}/likes`, {
+  return request(`${baseUrl}/items/${_id}/likes`, {
     method: "DELETE",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
       authorization: `Bearer ${jwt}`,
     },
-  }).then(checkResponse);
+  });
 };
 
 const api = {
