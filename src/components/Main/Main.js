@@ -47,6 +47,7 @@ function Main({
                 item={clothes}
                 onSelectCard={onSelectCard}
                 key={clothes._id}
+                handleCardLike={handleCardLike}
               />
             );
           })}

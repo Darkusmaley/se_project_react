@@ -18,13 +18,12 @@ const ItemCard = ({ item, onSelectCard, handleCardLike, isloggedIn }) => {
 
   return (
     <div className="card__container">
-      {isloggedIn && (
-        <button
-          className={likeButtonClass}
-          type="button"
-          onClick={handleLike}
-        ></button>
-      )}
+      <button
+        className={likeButtonClass}
+        type="button"
+        onClick={handleLike}
+      ></button>
+
       <img
         src={item.imageUrl}
         className="card__section-image"

@@ -61,7 +61,7 @@ export const likeCard = (_id) => {
   }).then(checkResponse);
 };
 
-export const unlikeCard = (_id, token) => {
+export const unlikeCard = (_id) => {
   const jwt = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/items/${_id}/likes`, {
     method: "DELETE",
