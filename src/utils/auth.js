@@ -1,5 +1,5 @@
 import { request } from "./api";
-const baseUrl = "http://localhost:3001";
+const baseUrl = "http://marcuswtwr.jumpingcrab.com:300:3001";
 const baseHeaders = { "Content-Type": "application/json" };
 
 export const register = ({ name, avatar, email, password }) => {
