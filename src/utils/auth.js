@@ -1,5 +1,8 @@
 import { request } from "./api";
-const baseUrl = "http://marcuswtwr.jumpingcrab.com:300:3001";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? " https://marcuswtwr.jumpingcrab.com"
+    : "http://localhost:3001";
 const baseHeaders = { "Content-Type": "application/json" };
 
 export const register = ({ name, avatar, email, password }) => {

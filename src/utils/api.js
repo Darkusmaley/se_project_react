@@ -1,4 +1,7 @@
-const baseUrl = "http://marcuswtwr.jumpingcrab.com:3001";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? " https://marcuswtwr.jumpingcrab.com"
+    : "http://localhost:3001";
 
 export const checkResponse = (res) => {
   if (res.ok) {
