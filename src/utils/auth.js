@@ -1,7 +1,7 @@
 import { request } from "./api";
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? " https://marcuswtwr.jumpingcrab.com"
+    ? "https://www.marcuswtwr.jumpingcrab.com/"
     : "http://localhost:3001";
 const baseHeaders = { "Content-Type": "application/json" };
 
