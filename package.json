@@ -19,7 +19,7 @@
     "test": "jest",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "npm run build && scp -r ./dist/* daleymarcus091@marcuswtwr.jumpingcrab.com:/home/daleymarcus091/se_project_react"
+    "deploy": "npm run build && scp -r ./build/* daleymarcus091@marcuswtwr.jumpingcrab.com:/home/daleymarcus091/se_project_react"
   },
   "eslintConfig": {
     "extends": [
