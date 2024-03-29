@@ -109,10 +109,9 @@ function App() {
   };
 
   const registerUser = (values) => {
-    debugger;
+    console.log(values);
     register(values)
       .then((user) => {
-        console.log(user);
         loginUser(user);
       })
       .catch((err) => {
