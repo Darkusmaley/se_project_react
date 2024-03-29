@@ -109,7 +109,6 @@ function App() {
   };
 
   const registerUser = (values) => {
-    console.log(values);
     register(values)
       .then((user) => {
         loginUser(user);
